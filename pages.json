@@ -5,6 +5,12 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/chenyu/auto_view",
+			"style": {
+				"navigationBarTitleText": "auto_view"
+			}
 		}
 	],
 	"globalStyle": {

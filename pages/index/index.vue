@@ -4,6 +4,9 @@
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
+		<view>
+			<button @tap="nav('auto_view')">css实现自动布局</button>
+		</view>
 	</view>
 </template>
 
@@ -13,6 +16,8 @@
 			return {
 				title: 'Hello'
 			}
+		},
+		components:{
 		},
 		onLoad() {
 			uni.request({
@@ -42,17 +47,27 @@
 			})
 		},
 		methods: {
-
+			nav(text){
+				uni.navigateTo({
+				    url: '../chenyu/'+text
+				})
+			}
 		}
 	}
 </script>
 
 <style>
+	page{
+		width: 100%;
+		height: 100%;
+	}
 	.content {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		/* align-items: stretch; */
+		/* justify-content: center; */
+		width: 100%;
+		height: 100%;
 	}
 
 	.logo {
