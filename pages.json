@@ -11,6 +11,12 @@
 			"style": {
 				"navigationBarTitleText": "auto_view"
 			}
+		},
+		{
+			"path": "pages/we_service/article/list",
+			"style": {
+				"navigationBarTitleText": "list"
+			}
 		}
 	],
 	"globalStyle": {

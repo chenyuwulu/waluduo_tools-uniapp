@@ -5,7 +5,8 @@
 			<text class="title">{{title}}</text>
 		</view>
 		<view>
-			<button @tap="nav('auto_view')">css实现自动布局</button>
+			<button @tap="nav('chenyu/auto_view')">css实现自动布局</button>
+			<button @tap="nav('we_service/article/list')">nvue页面</button>
 		</view>
 	</view>
 </template>
@@ -21,7 +22,7 @@
 		},
 		onLoad() {
 			uni.request({
-				url: 'http://localhost:9529/dev-api/api/index', //仅为示例，并非真实接口地址。
+				url: 'http://localhost:8011/api/index', //仅为示例，并非真实接口地址。
 				data: {
 					page:1,
 					rows:2,
@@ -49,7 +50,7 @@
 		methods: {
 			nav(text){
 				uni.navigateTo({
-				    url: '../chenyu/'+text
+				    url: '../'+text
 				})
 			}
 		}
