@@ -1,5 +1,5 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -15,14 +15,24 @@
 		{
 			"path": "pages/we_service/article/list",
 			"style": {
-				"navigationBarTitleText": "list"
+				"navigationBarTitleText": "文章列表",
+				"h5":{
+					"titleNView":{
+						"type":"default"
+					}
+				},
+				"app-plus":{
+					"titleNView":{
+						"type":"transparent"
+					}
+				}
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#66ccff",
+		"backgroundColor": "#FFFFFF"
 	}
 }

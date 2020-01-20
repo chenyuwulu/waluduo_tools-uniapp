@@ -30,7 +30,9 @@ MyRequest.prototype.request = function (config = {}) {
     if (!config.method && !this.defaultConfig.method) {
         config.method = 'get';
     }
-
+		if (!config.method && this.defaultConfig.method) {
+		    config.method = this.defaultConfig.method;
+		}
     let newConfig = MergeConfig(this.defaultConfig, config);
     let method = config.method.toLowerCase();
     let networkType = ['upload', 'download'].includes(method) ? method : 'xhr';

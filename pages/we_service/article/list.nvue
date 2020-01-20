@@ -1,17 +1,17 @@
 <template>
-	<view>
-		111
+	<view style="height: 10000rpx;">
+		111www
 	</view>
 </template>
 
 <script>
 	import request from "@/common/pocky-request/index.js"
-	const app = getApp()
 	const instance = new request()
+	const app = getApp()
 	export default {
 		onLoad() {
 			instance.request({
-				url: "api/index",
+				url: "uniapp/index",
 				data: {
 					page:1,
 					rows:2,
@@ -24,9 +24,11 @@
 					},
 					object:{
 						c:1,
-						d:2
+						d:2,
+						e:3,
+						f:4
 					}
-				},
+				}
 			}).then(res => {
 				console.log(res.data.data)
 			})
@@ -35,5 +37,7 @@
 </script>
 
 <style>
-
+	page{
+		
+	}
 </style>

@@ -14,16 +14,16 @@ export const globalInterceptor = {
  * header 中`content-type`设置特殊参数 或 配置其他会导致触发 跨域 问题，出现跨域会直接进入响应拦截器的catch函数中
  */
 export const config = {
-	//帮你游温岭
 		baseURL: "http://localhost:8011/",  // 基地址
     // baseURL: 'https://www.fastmock.site/mock/7f2e97ecf7a26f51479a4a08f6c49c8b',
     // dataType: 'json',
     // responseType: 'text',
     header: {
         // uid: 'xxxx',
-        contentType: 'application/x-www-form-urlencoded'
-        // 'Content-Type': 'application/json'
+        // 'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/json'
     },
+		method: "post"
 }
 
 
@@ -41,10 +41,12 @@ export const config = {
  */
 globalInterceptor.request.use(config => {
     // console.log('is global request interceptor 1', config);
+		// config.method = "POST"
 
     getToken() && (config.header.token = getToken());
 		//这里是改变当前的项目所指定的服务器资源参数
 		// console.log(config)
+		
     return config;
 		
     // return false;

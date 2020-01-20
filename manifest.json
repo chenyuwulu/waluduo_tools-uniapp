@@ -90,7 +90,11 @@
             }
         },
         "devServer" : {
-            "port" : 443
+            "port" : "",
+            "https" : false
+        },
+        "sdkConfigs" : {
+            "maps" : {}
         }
     }
 }

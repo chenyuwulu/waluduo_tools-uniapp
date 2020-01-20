@@ -6,7 +6,7 @@
 		</view>
 		<view>
 			<button @tap="nav('chenyu/auto_view')">css实现自动布局</button>
-			<button @tap="nav('we_service/article/list')">nvue页面</button>
+			<button @tap="nav('we_service/article/list')">文章页面</button>
 		</view>
 	</view>
 </template>
@@ -22,25 +22,25 @@
 		},
 		onLoad() {
 			uni.request({
-				url: 'http://localhost:8011/api/index', //仅为示例，并非真实接口地址。
+				url: 'http://localhost:8011/uniapp/index', //仅为示例，并非真实接口地址。
 				data: {
 					page:1,
 					rows:2,
 					totalPage:3,
 					totalSize:4,
 					orderBy:"desc",
-					Params:{
-						a:1,
-						b:2
-					},
-					object:{
-						c:1,
-						d:2
-					}
+					// Params:{
+					// 	a:1,
+					// 	b:2
+					// },
+					// object:{
+					// 	c:1,
+					// 	d:2
+					// }
 				},
 				method:"POST",
 				header: {
-					'Content-Type': 'application/x-www-form-urlencoded' ,//自定义请求头信息
+					'content-type': 'application/x-www-form-urlencoded' ,//自定义请求头信息
 				},
 				success: (res) => {
 					console.log(res.data.data)
