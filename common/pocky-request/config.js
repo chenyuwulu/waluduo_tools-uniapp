@@ -14,7 +14,7 @@ export const globalInterceptor = {
  * header 中`content-type`设置特殊参数 或 配置其他会导致触发 跨域 问题，出现跨域会直接进入响应拦截器的catch函数中
  */
 export const config = {
-		baseURL: "http://localhost:8011/",  // 基地址
+		baseURL: "https://api.chenyuwulu.top/mock/14/uniapp/",  // 基地址
     // baseURL: 'https://www.fastmock.site/mock/7f2e97ecf7a26f51479a4a08f6c49c8b',
     // dataType: 'json',
     // responseType: 'text',

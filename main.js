@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import App from './App'
 
-Vue.config.productionTip = false
+import store from './store'
+import {Mixin1} from './common/mixins'
 
+Vue.config.productionTip = false
+Vue.prototype.$store = store
+Vue.mixin(Mixin1)
 App.mpType = 'app'
 
 const app = new Vue({
-    ...App
+	store,
+	...App
 })
 app.$mount()
