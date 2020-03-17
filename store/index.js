@@ -5,30 +5,34 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
-		login: false,
-		token: '',
-		avatarUrl: '',
-		userName: '',
+		login:false,
+		token:'',
+		userinfo:{},
 	},
 	mutations: {
 		login(state, provider){
-			console.log("这是vuex方法的state",state)
-			console.log("这是vuex方法的provider",provider)
-			console.log("这是vuex方法的this",this)
 			state.login = true
 			state.token = provider.token
-			state.userName = provider.userName
-			state.avatarUrl = provider.avatarUrl
+			state.userinfo = provider.userinfo
+			console.log("这里快")
 		},
 		logout(state){
 			state.login = false
 			state.token = ''
-			state.userName = ''
-			state.avatarUrl = ''
+			state.userinfo = {}
 		}
 	},
 	actions:{
-		
+		login({ commit }, provider) {
+			return new Promise((resolve, reject) => {
+				if(provider.token){
+					commit('login',provider)
+					resolve(true)
+				} else {
+					reject('登录失败')
+				}
+			})
+		},
 	},
 	getters:{
 		

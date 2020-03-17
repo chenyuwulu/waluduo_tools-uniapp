@@ -46,7 +46,7 @@
 				userName: 'uni-app'
 			})
 			instance.request({
-				url: "index",
+				url: "token",
 				data: {
 					page:1,
 					rows:2,
