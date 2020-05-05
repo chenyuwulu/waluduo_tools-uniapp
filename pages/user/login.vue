@@ -82,7 +82,9 @@
 		</view>
 		<view class="padding flex flex-direction">
 			<button class="cu-btn bg-grey lg" v-show="protocol==0?true:false" @tap="navigateBack(1)">暂不授权</button>
-			<button class="cu-btn bg-blue lg" v-show="protocol==1?true:false" @tap="showtoast('当前暂未做好')">授权登录</button>
+			<!-- #ifdef MP-WEIXIN -->
+				<button class="cu-btn bg-blue lg" open-type="getUserInfo" v-show="protocol==1?true:false" @getuserinfo="mp_wx_getuserinfo">授权登录</button>
+			<!-- #endif -->
 		</view>
 		<view class="flex justify-center">
 			<checkbox-group @change="protocol_tap">
@@ -182,6 +184,36 @@
 				},
 			// #endif
 			
+			//授权方法
+			// #ifdef MP-WEIXIN
+				mp_wx_getuserinfo(e){
+					console.log(e)
+					const that = this
+					if(e.detail.errMsg=="getUserInfo:ok"){
+						uni.login({
+							success: (x) => {
+								console.log(x)
+								instance.request({
+									url: "uniapp/article/index",
+									data: {
+										code:x.code,
+										appid:app.$vm.$options.globalData.appid,
+										secret:app.$vm.$options.globalData.secret,
+										rawData:e.detail.rawData,
+										signature:e.detail.signature,
+										iv:e.detail.iv,
+										encryptedData:e.detail.encryptedData,
+										page:222,
+									},
+									methods: "POST",
+								}).then(res => {
+									console.log(res)
+								})
+							}
+						})
+					}
+				},
+			// #endif
 		}
 	}
 </script>

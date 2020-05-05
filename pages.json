@@ -1,33 +1,28 @@
 {
 	"pages": [
 		//首页
-		{
-			"path": "pages/index/index",
+		{"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
 			}
 		},
 		//用户中心页面
-		{
-			"path": "pages/user/user",
+		{"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
 		},
-		{
-			"path": "pages/user/login",
+		{"path": "pages/user/login",
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		},
-		{
-			"path": "pages/user/forget",
+		{"path": "pages/user/forget",
 			"style": {
 				"navigationBarTitleText": "忘记密码"
 			}
 		},
-		{
-			"path": "pages/user/register",
+		{"path": "pages/user/register",
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
@@ -35,54 +30,60 @@
 	],
 	"subPackages": [
 		//个人测试分包
-		{
-			"root": "pages/chenyu",
-			"pages": [
-				{
-					"path":"auto_view",
-					"style":{
-						"navigationBarTitleText": "auto_view",
-						"usingComponents":{
-							
-						}
-					}
-				},
-				{
-					"path":"template",
-					"style":{
-						"navigationBarTitleText": "模板案例页面",
-						"usingComponents":{
-							
-						}
-					}
-				}
-			]
-		},
-		{
-			"root": "pages/we_service/article",
-			"pages": [
-				{
-					"path": "list",
-					"style": {
-						"navigationBarTitleText": "文章列表",
-						"h5":{
-							"titleNView":{
-								"type":"default"
+			{"root": "pages/chenyu",
+				"pages": [
+					{"path":"auto_view",
+						"style":{
+							"navigationBarTitleText": "auto_view",
+							"usingComponents":{
+								
 							}
-						},
-						"app-plus":{
-							"titleNView":{
-								"type":"transparent"
+						}
+					},
+					{"path":"template",
+						"style":{
+							"navigationBarTitleText": "模板案例页面",
+							"usingComponents":{
+								
 							}
 						}
 					}
-				}
-			]
-		}
+				]
+			},
+		//文章分包
+			{"root": "pages/we_service/article",
+				"pages": [
+					{"path": "list",
+						"style": {
+							"navigationBarTitleText": "文章列表",
+							"h5":{
+								"titleNView":{
+									"type":"default"
+								}
+							},
+							"app-plus":{
+								"titleNView":{
+									"type":"transparent"
+								}
+							}
+						}
+					}
+				]
+			},
+		//琐事账簿分包
+			{"root":"pages/we_service/trivia_books",
+				"pages":[
+					{"path":"index",
+						"style":{
+							"navigationBarTitleText":"琐事账簿"
+						}
+					}
+				]
+			}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "兴趣来源",
 		"navigationBarBackgroundColor": "#0081ff",
 		"backgroundColor": "#FFFFFF"
 	},
@@ -104,15 +105,15 @@
 		"backgroundColor": "#ffffff",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"iconPath": "/static/tabbar/basics.png",
-				"selectedIconPath": "/static/tabbar/basics_cur.png",
+				"iconPath": "/static/tabbar/home.png",
+				"selectedIconPath": "/static/tabbar/home_select.png",
 				"text": "首页"
 			},
 			{
 				"pagePath": "pages/user/user",
-				"iconPath": "/static/tabbar/about.png",
-				"selectedIconPath": "/static/tabbar/about_cur.png",
-				"text": "我的"
+				"iconPath": "/static/tabbar/user.png",
+				"selectedIconPath": "/static/tabbar/user_select.png",
+				"text": "用户中心"
 			}
 		]
 	}

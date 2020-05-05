@@ -59,7 +59,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx0989c6acdb879733",
+        "appid" : "wx7908819e8c8c6da8",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,
@@ -69,18 +69,30 @@
         "usingComponents" : true,
         "permission" : {
             "scope.userLocation" : {
-                "desc" : "申请位置"
+                "desc" : "申请位置权限"
             }
         }
     },
     "mp-alipay" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "appid" : ""
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "setting" : {
+            "urlCheck" : false
+        },
+        "appid" : ""
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "setting" : {
+            "minified" : true,
+            "urlCheck" : false,
+            "postcss" : true,
+            "es6" : true
+        },
+        "appid" : ""
     },
     "h5" : {
         "router" : {
@@ -97,6 +109,15 @@
         },
         "sdkConfigs" : {
             "maps" : {}
+        }
+    },
+    "mp-qq" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true,
+            "es6" : true,
+            "postcss" : true
         }
     }
 }

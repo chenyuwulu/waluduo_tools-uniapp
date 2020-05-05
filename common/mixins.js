@@ -1,4 +1,4 @@
-export const Mixin1 = {
+export const Mixin_1 = {
 	methods: {
 		//这是对已有的uniapp的api做简单使用封装
 		navigateTo(url){
@@ -42,7 +42,7 @@ export const Mixin1 = {
 		//这是自己写的封装方法或复杂的uniapp的api使用方法
 		
 		//判断当前环境是不是微信环境
-		// #ifdef H5 || APP-PLUS
+		// #ifdef H5
 			isweixin() {
 				const ua = window.navigator.userAgent.toLowerCase()
 				if(ua.match(/MicroMessenger/i) == 'micromessenger'){
