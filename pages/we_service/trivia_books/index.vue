@@ -1,6 +1,15 @@
 <template>
-	<view class="flex">
+	<view class="flex index-page">
 		这是{{title}}默认flex排版容器
+		<uni-fab 
+			ref="fab" 
+			:pattern="pattern"
+			:content="fab_list" 
+			horizontal="right" 
+			vertical="bottom" 
+			direction="vertical" 
+			@trigger="fab_trigger" 
+			@fabClick="fab_Click" />
 	</view>
 </template>
 
@@ -13,7 +22,33 @@
 		components:{},
 		data() {
 			return {
-				title: 'template'
+				title: 'template',
+				pattern: {
+					color: '#7A7E83',
+					backgroundColor: '#fff',
+					selectedColor: '#347816',
+					buttonColor: '#347816'
+				},
+				fab_list:[{
+						iconPath: '/static/trivia_books/add.png',
+						selectedIconPath: '/static/trivia_books/add_active.png',
+						text: '新建便签',
+						active: false,
+						status:'add'
+					},{
+						iconPath: '/static/trivia_books/history.png',
+						selectedIconPath: '/static/trivia_books/history_active.png',
+						text: '历史记录',
+						active: false,
+						status:'history'
+					},{
+						iconPath: '/static/trivia_books/setting.png',
+						selectedIconPath: '/static/trivia_books/setting_active.png',
+						text: '设置',
+						active: false,
+						status:'setting'
+					}
+				]
 			}
 		},
 		//计算属性
@@ -33,11 +68,32 @@
 		},
 		onHide() {},
 		methods:{
-			
+			fab_trigger(e){
+				if(e.item.status == 'add'){
+					uni.navigateTo({
+						url:"add"
+					})
+				}
+				if(e.item.status == 'history'){
+					uni.navigateTo({
+						url:"history"
+					})
+				}
+				if(e.item.status == 'setting'){
+					uni.navigateTo({
+						url:"setting"
+					})
+				}
+			},
+			fab_Click(e){
+				console.log(111,e)
+			}
 		}
 	}
 </script>
 
-<style>
-	
+<style lang="scss">
+	.index-page{
+		padding: 20rpx 20rpx;
+	}
 </style>

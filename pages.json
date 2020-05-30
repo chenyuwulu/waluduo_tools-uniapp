@@ -1,28 +1,28 @@
 {
 	"pages": [
 		//首页
-		{"path": "pages/index/index",
+		{	"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
 		},
 		//用户中心页面
-		{"path": "pages/user/user",
+		{	"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
 		},
-		{"path": "pages/user/login",
+		{	"path": "pages/user/login",
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		},
-		{"path": "pages/user/forget",
+		{	"path": "pages/user/forget",
 			"style": {
 				"navigationBarTitleText": "忘记密码"
 			}
 		},
-		{"path": "pages/user/register",
+		{	"path": "pages/user/register",
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
@@ -30,9 +30,9 @@
 	],
 	"subPackages": [
 		//个人测试分包
-			{"root": "pages/chenyu",
+			{	"root": "pages/chenyu",
 				"pages": [
-					{"path":"auto_view",
+					{	"path":"auto_view",
 						"style":{
 							"navigationBarTitleText": "auto_view",
 							"usingComponents":{
@@ -40,7 +40,7 @@
 							}
 						}
 					},
-					{"path":"template",
+					{	"path":"template",
 						"style":{
 							"navigationBarTitleText": "模板案例页面",
 							"usingComponents":{
@@ -51,9 +51,9 @@
 				]
 			},
 		//文章分包
-			{"root": "pages/we_service/article",
+			{	"root": "pages/we_service/article",
 				"pages": [
-					{"path": "list",
+					{	"path": "list",
 						"style": {
 							"navigationBarTitleText": "文章列表",
 							"h5":{
@@ -70,12 +70,31 @@
 					}
 				]
 			},
-		//琐事账簿分包
-			{"root":"pages/we_service/trivia_books",
+		//琐事便签分包
+			{	"root":"pages/we_service/trivia_books",
 				"pages":[
-					{"path":"index",
+					{	"path":"index",
 						"style":{
-							"navigationBarTitleText":"琐事账簿"
+							"navigationBarTitleText":"琐事便签",
+							"navigationBarBackgroundColor":"#347816"
+						}
+					},
+					{	"path":"add",
+						"style":{
+							"navigationBarTitleText":"新建便签",
+							"navigationBarBackgroundColor":"#347816"
+						}
+					},
+					{	"path":"history",
+						"style":{
+							"navigationBarTitleText":"历史记录",
+							"navigationBarBackgroundColor":"#347816"
+						}
+					},
+					{	"path":"setting",
+						"style":{
+							"navigationBarTitleText":"设置",
+							"navigationBarBackgroundColor":"#347816"
 						}
 					}
 				]
