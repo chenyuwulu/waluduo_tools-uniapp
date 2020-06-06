@@ -110,7 +110,7 @@
 		"autoscan":true,
 		"custom": {
 			"uni-(.*)": "@/components/uni-ui_1.2.0/uni-$1/uni-$1.vue",
-			"tui-(.*)": "@/components/thorui_1.5.0/tui-$1/tui-$1.vue",
+			"tui-(.*)": "@/components/thorui_1.5.1/tui-$1/tui-$1.vue",
 			"^u-(.*)": "@/components/uview-ui/components/u-$1/u-$1.vue"
 		}
 	},

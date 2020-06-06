@@ -3,6 +3,8 @@ import App from './App'
 
 import store from './store'
 import {Mixin_1} from './common/mixins'
+import uView from "./components/uview-ui"
+Vue.use(uView)
 
 Vue.config.productionTip = true
 Vue.prototype.$store = store

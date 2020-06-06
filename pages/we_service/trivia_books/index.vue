@@ -1,6 +1,17 @@
 <template>
 	<view class="flex index-page">
-		这是{{title}}默认flex排版容器
+		<u-card :border="true" padding="20" v-for="(item,index) in [1,2,3,4]" :key="index">
+			<view class="" slot="head">
+				标题位置
+			</view>
+			<view class="" slot="body">
+				内容
+			</view>
+			<view class="" slot="foot">
+				页脚
+			</view>
+		</u-card>
+		<!-- 右下角的悬浮图标 -->
 		<uni-fab 
 			ref="fab" 
 			:pattern="pattern"
@@ -94,6 +105,7 @@
 
 <style lang="scss">
 	.index-page{
+		flex-direction: column;
 		padding: 20rpx 20rpx;
 	}
 </style>
