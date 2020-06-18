@@ -1,5 +1,8 @@
 <script>
-	import { config_appid,config_secret } from "@/common/config"
+	import { 
+		platform,
+		config_id
+	} from "@/common/config"
 	export default {
 		onLaunch() {
 			console.log('当uni-app初始化完成时触发（全局只触发一次）')
@@ -41,8 +44,8 @@
 		},
 		globalData:{
 			//锁式便签小程序
-			appid:config_appid,
-			secret:config_secret
+			platform:platform,
+			config_id:config_id
 		}
 	}
 </script>

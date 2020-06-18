@@ -197,8 +197,8 @@
 									url: "uniapp/article/index",
 									data: {
 										code:x.code,
-										appid:app.$vm.$options.globalData.appid,
-										secret:app.$vm.$options.globalData.secret,
+										platform:app.$vm.$options.globalData.platform,
+										config_id:app.$vm.$options.globalData.config_id,
 										rawData:e.detail.rawData,
 										signature:e.detail.signature,
 										iv:e.detail.iv,
