@@ -92,7 +92,7 @@
             "postcss" : true,
             "es6" : true
         },
-        "appid" : ""
+        "appid" : "tt00a6761b9f8cfd5f"
     },
     "h5" : {
         "router" : {
@@ -112,7 +112,7 @@
         }
     },
     "mp-qq" : {
-        "appid" : "",
+        "appid" : "1109605917",
         "setting" : {
             "urlCheck" : false,
             "minified" : true,

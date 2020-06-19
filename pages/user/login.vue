@@ -85,6 +85,12 @@
 			<!-- #ifdef MP-WEIXIN -->
 				<button class="cu-btn bg-blue lg" open-type="getUserInfo" v-show="protocol==1?true:false" @getuserinfo="mp_wx_getuserinfo">授权登录</button>
 			<!-- #endif -->
+			<!-- #ifdef MP-QQ -->
+				<button class="cu-btn bg-blue lg" open-type="getUserInfo" v-show="protocol==1?true:false" @getuserinfo="mp_qq_getuserinfo">授权登录</button>
+			<!-- #endif -->
+			<!-- #ifdef MP-TOUTIAO -->
+				<button class="cu-btn bg-blue lg" v-show="protocol==1?true:false" @tap="mp_toutiao_getuserinfo">授权登录</button>
+			<!-- #endif -->
 		</view>
 		<view class="flex justify-center">
 			<checkbox-group @change="protocol_tap">
@@ -213,6 +219,61 @@
 						})
 					}
 				},
+			// #endif
+			// #ifdef MP-QQ
+				mp_qq_getuserinfo(e){
+					console.log(e)
+					if(e.detail.errMsg=="getUserInfo:ok"){
+						uni.login({
+							success: (x) => {
+								console.log(x)
+								instance.request({
+									url: "uniapp/article/index",
+									data: {
+										code:x.code,
+										platform:app.$vm.$options.globalData.platform,
+										config_id:app.$vm.$options.globalData.config_id,
+										rawData:e.detail.rawData,
+										signature:e.detail.signature,
+										iv:e.detail.iv,
+										encryptedData:e.detail.encryptedData,
+									},
+									methods: "POST",
+								}).then(res => {
+									console.log(res)
+								})
+							}
+						})
+					}
+				}
+			// #endif
+			// #ifdef MP-TOUTIAO
+				mp_toutiao_getuserinfo(e){
+					uni.login({
+						success: (x) => {
+							uni.getUserInfo({
+								withCredentials:true,
+								success: (y) => {
+									instance.request({
+										url: "uniapp/article/index",
+										data: {
+											code:x.code,
+											platform:app.$vm.$options.globalData.platform,
+											config_id:app.$vm.$options.globalData.config_id,
+											rawData:y.rawData,
+											signature:y.signature,
+											iv:y.iv,
+											encryptedData:y.encryptedData,
+										},
+										methods: "POST",
+									}).then(res => {
+										console.log(res)
+									})
+								}
+							})
+						}
+					})
+				}
 			// #endif
 		}
 	}

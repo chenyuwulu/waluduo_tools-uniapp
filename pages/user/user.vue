@@ -40,11 +40,19 @@
 			const that = this
 			console.log(this.$store.state.login)
 			if(this.$store.state.login==false){
+				// #ifndef MP-TOUTIAO
+				this.$nextTick(()=>{
+					this.$refs.is_login.open()
+				})
+				// #endif
+				// #ifdef MP-TOUTIAO
 				setTimeout(()=>{
-					that.$refs.is_login.open()
-				},0)
+					this.$refs.is_login.open()
+				},1000)
+				// #endif
+				
 			}
-			console.log(getApp())
+			console.log(app)
 			// this.login({
 			// 	avatarUrl: 'https://img-cdn-qiniu.dcloud.net.cn/uploads/nav_menu/10.jpg',
 			// 	token: 'user123456',
