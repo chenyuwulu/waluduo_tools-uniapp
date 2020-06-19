@@ -131,6 +131,9 @@
 		computed: {},
 		//检测属性
 		watch: {},
+		mounted() {
+			
+		},
 		onReady() {},
 		onShow() {},
 		onLoad(options) {

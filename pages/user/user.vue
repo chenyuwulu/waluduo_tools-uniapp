@@ -36,21 +36,20 @@
 		onShow() {
 			
 		},
+		mounted() {
+			// #ifdef MP-TOUTIAO
+			if(this.$store.state.login==false){
+				this.$refs.is_login.open()
+			}
+			// #endif
+		},
 		onLoad(options) {
 			const that = this
 			console.log(this.$store.state.login)
 			if(this.$store.state.login==false){
-				// #ifndef MP-TOUTIAO
 				this.$nextTick(()=>{
 					this.$refs.is_login.open()
 				})
-				// #endif
-				// #ifdef MP-TOUTIAO
-				setTimeout(()=>{
-					this.$refs.is_login.open()
-				},1000)
-				// #endif
-				
 			}
 			console.log(app)
 			// this.login({

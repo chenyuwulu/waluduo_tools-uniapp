@@ -334,7 +334,7 @@
 					formData: this.formData,
 					header: this.header,
 					success: (res) => {
-						if (res.statusCode != 200) {
+						if (![200,201].includes(res.statusCode)) {
 							this.uploadError(index, res.data);
 						} else {
 							// 上传成功
@@ -462,6 +462,7 @@
 		display: block;
 		width: 100%;
 		height: 100%;
+		border-radius: 10rpx;
 	}
 
 	.u-delete-icon {

@@ -14,10 +14,18 @@ export default {
 			}
 		},
 		// 验证规则
-		rules: {
-			type: Object,
+		// rules: {
+		// 	type: [Object, Function, Array],
+		// 	default() {
+		// 		return {};
+		// 	}
+		// },
+		// 有错误时的提示方式，message-提示信息，border-如果input设置了边框，变成呈红色，
+		// border-bottom-下边框呈现红色，none-无提示
+		errorType: {
+			type: Array,
 			default() {
-				return {};
+				return ['message', 'toast']
 			}
 		}
 	},
@@ -28,7 +36,7 @@ export default {
 	},
 	data() {
 		return {
-			
+			rules: {}
 		};
 	},
 	created() {
@@ -52,11 +60,14 @@ export default {
 		});
 	},
 	methods: {
+		setRules(rules) {
+			this.rules = rules;
+		},
 		// 清空所有u-form-item组件的内容，本质上是调用了u-form-item组件中的resetField()方法
 		resetFields() {
 			this.fields.map(field => {
 				field.resetField();
-			})
+			});
 		},
 		// 校验全部数据
 		validate(callback) {
@@ -64,20 +75,28 @@ export default {
 				// 对所有的u-form-item进行校验
 				let valid = true; // 默认通过
 				let count = 0; // 用于标记是否检查完毕
+				let errorArr = []; // 存放错误信息
 				this.fields.map(field => {
 					// 调用每一个u-form-item实例的validation的校验方法
 					field.validation('', error => {
 						// 如果任意一个u-form-item校验不通过，就意味着整个表单不通过
-						if(error) valid = false;
-						// 当历遍了所有的u-form-item时，调用promise的then方法
-						if(++count === this.fields.length) {
-							resolve(valid); // 进入promise的then方法
-							// 调用回调方法
-							if(typeof callback == 'function') callback(valid); 
+						if (error) {
+							valid = false;
+							errorArr.push(error);
 						}
-					})
-				})
-			})
+						// 当历遍了所有的u-form-item时，调用promise的then方法
+						if (++count === this.fields.length) {
+							resolve(valid); // 进入promise的then方法
+							// 判断是否设置了toast的提示方式，只提示最前面的表单域的第一个错误信息
+							if(this.errorType.indexOf('none') === -1 && this.errorType.indexOf('toast') >= 0) {
+								this.$u.toast(errorArr[0]);
+							}
+							// 调用回调方法
+							if (typeof callback == 'function') callback(valid);
+						}
+					});
+				});
+			});
 		}
 	}
 };
