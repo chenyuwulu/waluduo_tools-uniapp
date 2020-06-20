@@ -17,7 +17,7 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello-3'
 			}
 		},
 		components:{

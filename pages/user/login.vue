@@ -91,6 +91,9 @@
 			<!-- #ifdef MP-TOUTIAO -->
 				<button class="cu-btn bg-blue lg" v-show="protocol==1?true:false" @tap="mp_toutiao_getuserinfo">授权登录</button>
 			<!-- #endif -->
+			<!-- #ifdef MP-360 -->
+				<se-button class="cu-btn bg-blue lg" open-type="getUserInfo" v-show="protocol==1?true:false" @getuserinfo="mp_360_getuserinfo">授权登录</se-button>
+			<!-- #endif -->
 		</view>
 		<view class="flex justify-center">
 			<checkbox-group @change="protocol_tap">
@@ -248,7 +251,7 @@
 							}
 						})
 					}
-				}
+				},
 			// #endif
 			// #ifdef MP-TOUTIAO
 				mp_toutiao_getuserinfo(e){
@@ -276,7 +279,17 @@
 							})
 						}
 					})
-				}
+				},
+			// #endif
+			// #ifdef MP-360
+				mp_360_getuserinfo(e){
+					console.log(e)
+					qh.getM2({
+						success: (res)=> {
+							console.log(res);
+						}
+					})
+				},
 			// #endif
 		}
 	}

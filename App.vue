@@ -8,11 +8,6 @@
 			console.log('当uni-app初始化完成时触发（全局只触发一次）')
 			console.log('初始化的this',this)
 			let storage = uni.getStorageSync('waluduo_userinfo')
-			// if(!storage){
-			// 	uni.navigateTo({
-			// 		url:'/pages/user/login'
-			// 	})
-			// }
 		},
 		ceshi(){
 			const that =this
