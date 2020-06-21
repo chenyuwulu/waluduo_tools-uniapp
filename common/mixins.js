@@ -42,7 +42,7 @@ export const Mixin_1 = {
 		//这是自己写的封装方法或复杂的uniapp的api使用方法
 		
 		//判断当前环境是不是微信环境
-		// #ifdef H5
+		// #ifdef H5 || APP-PLUS
 			isweixin() {
 				const ua = window.navigator.userAgent.toLowerCase()
 				if(ua.match(/MicroMessenger/i) == 'micromessenger'){

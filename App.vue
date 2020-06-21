@@ -1,19 +1,17 @@
 <script>
-	import { 
+	import { //区分不同平台所用的配置文件
 		platform,
-		config_id
+		config_id,
 	} from "@/common/config"
 	export default {
 		onLaunch() {
 			console.log('当uni-app初始化完成时触发（全局只触发一次）')
-			console.log('初始化的this',this)
-			let storage = uni.getStorageSync('waluduo_userinfo')
+			console.log('app.vue处,初始化的this',this)
 		},
 		ceshi(){
-			const that =this
-			return new Promise(resolve => {
+			return new Promise((resolve,reject) => {
 				setTimeout(()=>{
-					that.$store.commit('login', {
+					this.$store.commit('login', {
 						avatarUrl: 'https://img-cdn-qiniu.dcloud.net.cn/uploads/nav_menu/10.jpg',
 						token: 'user123456',
 						userinfo: {
@@ -38,7 +36,6 @@
 			console.log('对nvue页面发送的数据进行监听')
 		},
 		globalData:{
-			//锁式便签小程序
 			platform:platform,
 			config_id:config_id
 		}
@@ -47,10 +44,7 @@
 
 <style>
 	/*每个页面公共css */
-	@import "components/colorui/main.css";
-	@import "components/colorui/icon.css";
-	@import "components/colorui/animation.css";
-	page{
-		background-color: #FFFFFF;
-	}
+	@import "@/components/colorui/main.css";
+	@import "@/components/colorui/icon.css";
+	@import "@/components/colorui/animation.css";
 </style>
