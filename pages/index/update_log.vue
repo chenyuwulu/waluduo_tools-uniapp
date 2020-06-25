@@ -1,0 +1,78 @@
+<template>
+	<view class="chenyu_page update_logo_page">
+		<u-time-line>
+			<u-time-line-item v-for="(item,index) in list" :key="index">
+				<template v-slot:content>
+					<view>
+						<view class="u-order-title" :style="index==0?'color:#000000;font-size: 40rpx;':''">{{item.title}}</view>
+						<view class="u-order-desc" :style="index==0?'color:#000000':''">
+							<view class="text" v-for="(items,idx) in item.content" :key="idx">
+								{{items}}
+							</view>
+						</view>
+						<view class="u-order-time">{{item.time}}</view>
+					</view>
+				</template>
+			</u-time-line-item>
+		</u-time-line>
+	</view>
+</template>
+
+<script>
+	const app = getApp()
+	export default {
+		//声明引用组件
+		components:{},
+		data() {
+			return {
+				list:[
+					{
+						title:"v1.0.0",
+						content:[
+							"1.初始版本，包含琐事便签功能",
+							"2.本版本不包含用户信息体系，采用本地缓存技术来存储，删除本小程序后会随之消失"
+						],
+						time:"2020年6月25日"
+					},
+				]
+			}
+		},
+		//计算属性
+		computed:{},
+		//检测属性
+		watch:{},
+		onReady() {},
+		onShow() {},
+		onLoad(options) {
+			console.log(this)
+		},
+		onHide() {},
+		methods:{
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	.update_logo_page{
+		padding: 20rpx 20rpx 20rpx 40rpx;
+		.u-order-title {
+			color: #c8c8c8;
+			font-weight: bold;
+			font-size: 30rpx;
+		}
+		.u-order-desc {
+			margin-top: 20rpx;
+			color: #969696;
+			font-size: 30rpx;
+			.text{
+				margin-top: 20rpx;
+			}
+		}
+		.u-order-time {
+			margin-top: 20rpx;
+			color: #c8c8c8;
+			font-size: 26rpx;
+		}
+	}
+</style>

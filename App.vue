@@ -36,8 +36,9 @@
 			console.log('对nvue页面发送的数据进行监听')
 		},
 		globalData:{
-			platform:platform,
-			config_id:config_id
+			platform:platform,//平台名称
+			config_id:config_id,//对应配置表的id
+			system_info:uni.getSystemInfoSync(),//获取当前平台下的系统信息
 		},
 		//判断当前环境是不是微信环境
 		// #ifdef H5
@@ -53,9 +54,13 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
 /* 	@import "@/components/colorui/main.css";
 	@import "@/components/colorui/icon.css";
 	@import "@/components/colorui/animation.css"; */
+	.chenyu_page{
+		display: flex;
+		flex-direction: column;
+	}
 </style>

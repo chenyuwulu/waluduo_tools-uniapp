@@ -1,30 +1,38 @@
 {
 	"pages": [
-		//首页
-		{	"path": "pages/index/index",
+		{	"path": "pages/index/index",//首页
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
-		},
-		//用户中心页面
-		{	"path": "pages/user/user",
+		},		
+		{	"path": "pages/user/user",//用户中心页面
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
 		},
-		{	"path": "pages/user/login",
+		{	"path": "pages/user/login",//登陆页面
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		},
-		{	"path": "pages/user/forget",
+		{	"path": "pages/user/forget",//忘记密码页面
 			"style": {
 				"navigationBarTitleText": "忘记密码"
 			}
 		},
-		{	"path": "pages/user/register",
+		{	"path": "pages/user/register",//注册页面
 			"style": {
 				"navigationBarTitleText": "注册"
+			}
+		},
+		{	"path": "pages/index/update_log",//更新日志
+			"style": {
+				"navigationBarTitleText": "更新日志"
+			}
+		},
+		{	"path": "pages/index/about",//更新日志
+			"style": {
+				"navigationBarTitleText": "关于本应用"
 			}
 		}
 	],
@@ -113,28 +121,25 @@
 			"tui-(.*)": "@/components/thorui/tui-$1/tui-$1.vue",
 			"^u-(.*)": "@/components/uview-ui/components/u-$1/u-$1.vue"
 		}
-	},
-	"tabBar": {
-		//#ifdef MP-WEIXIN
-		"custom": false,
-		//#endif
-		"position":"bottom",
-		"color": "#7A7E83",
-		"selectedColor": "#0081ff",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"iconPath": "/static/tabbar/home.png",
-				"selectedIconPath": "/static/tabbar/home_select.png",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/user/user",
-				"iconPath": "/static/tabbar/user.png",
-				"selectedIconPath": "/static/tabbar/user_select.png",
-				"text": "用户中心"
-			}
-		]
 	}
+	// "tabBar": {
+	// 	"position":"bottom",
+	// 	"color": "#7A7E83",
+	// 	"selectedColor": "#0081ff",
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [{
+	// 			"pagePath": "pages/index/index",
+	// 			"iconPath": "/static/tabbar/home.png",
+	// 			"selectedIconPath": "/static/tabbar/home_select.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/user/user",
+	// 			"iconPath": "/static/tabbar/user.png",
+	// 			"selectedIconPath": "/static/tabbar/user_select.png",
+	// 			"text": "用户中心"
+	// 		}
+	// 	]
+	// }
 }

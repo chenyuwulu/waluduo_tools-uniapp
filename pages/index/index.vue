@@ -1,15 +1,15 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+	<view class="chenyu_page">
+		<view class="caption">
+			<image class="image" src="/static/logo.png" mode="aspectFit" />
+			<view class="text">{{title}}</view>
 		</view>
-		<view class="flex-direction padding-left-lg padding-right-lg">
-			<u-button type="primary" @tap="nav('chenyu/template')">vue模板页</u-button>
-			<u-button type="primary" @tap="nav('chenyu/auto_view')">css实现自动布局</u-button>
-			<u-button type="primary" @tap="nav('we_service/article/list')">文章页面</u-button>
-			<u-button type="primary" @tap="nav('we_service/trivia_books/index')">琐事账簿</u-button>
-		</view>
+		<u-grid :col="2">
+			<u-grid-item v-for="(item,index) in list" :key="index" @click="navigateTo(item.url)">
+				<u-icon :name="item.icon" :size="40"></u-icon>
+				<view class="grid-text">{{item.name}}</view>
+			</u-grid-item>
+		</u-grid>
 	</view>
 </template>
 
@@ -17,10 +17,41 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: '兴趣来自于缘分',
+				list:[
+					// {
+					// 	name:"vue模板页",
+					// 	icon:"",
+					// 	url:"/pages/chenyu/auto_view"
+					// },
+					// {
+					// 	name:"css实现自动布局",
+					// 	url:"/pages/chenyu/auto_view"
+					// },
+					// {
+					// 	name:"文章页面",
+					// 	url:"/pages/we_service/article/list"
+					// },
+					{
+						name:"琐事便签",
+						icon:"order",
+						url:"/pages/we_service/trivia_books/index"
+					},
+					{
+						name:"更新日志",
+						icon:"calendar",
+						url:"/pages/index/update_log"
+					},
+					{
+						name:"关于本应用",
+						icon:"more-circle",
+						url:"/pages/index/about"
+					},
+				]
 			}
 		},
 		components:{
+			
 		},
 		onLoad() {
 			// uni.request({
@@ -50,45 +81,32 @@
 			// })
 		},
 		methods: {
-			nav(text){
-				uni.navigateTo({
-				    url: '../'+text
-				})
-			}
+			
 		}
 	}
 </script>
 
-<style>
-	page{
-		width: 100%;
-		height: 100%;
-	}
-	.content {
+<style lang="scss">
+	.caption {
 		display: flex;
 		flex-direction: column;
-		/* align-items: stretch; */
-		/* justify-content: center; */
-		width: 100%;
-		height: 100%;
+		align-items: center;
+		padding-top: 36rpx;
+		padding-bottom: 36rpx;
+		.image{
+			width: 300rpx;
+			height: 300rpx;
+			border-radius: 50%;
+		}
+		.text{
+			margin-top: 36rpx;
+			font-size: 36rpx;
+			color: #000000;
+		}
 	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.grid-text {
+		font-size: 30rpx;
+		margin-top: 4rpx;
+		color: $u-type-info;
 	}
 </style>
