@@ -38,13 +38,24 @@
 		globalData:{
 			platform:platform,
 			config_id:config_id
-		}
+		},
+		//判断当前环境是不是微信环境
+		// #ifdef H5
+			isweixin() {
+				const ua = window.navigator.userAgent.toLowerCase()
+				if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+					return true
+				} else {
+					return false
+				}
+			},
+		// #endif
 	}
 </script>
 
 <style>
 	/*每个页面公共css */
-	@import "@/components/colorui/main.css";
+/* 	@import "@/components/colorui/main.css";
 	@import "@/components/colorui/icon.css";
-	@import "@/components/colorui/animation.css";
+	@import "@/components/colorui/animation.css"; */
 </style>

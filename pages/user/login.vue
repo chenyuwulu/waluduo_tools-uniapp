@@ -1,7 +1,7 @@
 <template>
 	<view class="flex flex-direction padding-left-lg padding-right-lg padding-top-lg">
 		<!-- #ifdef H5 || APP-PLUS -->
-		<view v-if="isweixin()==false">
+		<view v-if="isweixin==false">
 			<view class="flex flex-direction" style="border: 1rpx solid #EEEEEE;border-radius: 10rpx;">
 				<view class="cu-form-group">
 					<view class="title">
@@ -38,7 +38,7 @@
 			</view>
 			<!-- #endif -->
 		</view>
-		<view v-if="isweixin()==true">
+		<view v-if="isweixin==true">
 			<view>
 				<image style="width: 100%;" src="../../static/logo.png" mode="widthFix"></image>
 			</view>
@@ -127,7 +127,10 @@
 					password: "",
 					password_flag: true,
 					password_img: 'attentionforbidfill'
-				}
+				},
+				// #ifdef H5
+				isweixin:app.$options.isweixin()
+				// #endif
 			}
 		},
 		//计算属性
@@ -141,6 +144,7 @@
 		onShow() {},
 		onLoad(options) {
 			console.log(this)
+			console.log('app',app)
 		},
 		onHide() {},
 		methods: {

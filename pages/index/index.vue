@@ -5,10 +5,10 @@
 			<text class="title">{{title}}</text>
 		</view>
 		<view class="flex-direction padding-left-lg padding-right-lg">
-			<button class="cu-capsule cu-btn bg-blue" @tap="nav('chenyu/template')">vue模板页</button>
-			<button class="cu-capsule cu-btn bg-blue" @tap="nav('chenyu/auto_view')">css实现自动布局</button>
-			<button class="cu-capsule cu-btn bg-blue" @tap="nav('we_service/article/list')">文章页面</button>
-			<button class="cu-capsule cu-btn bg-blue" @tap="nav('we_service/trivia_books/index')">琐事账簿</button>
+			<u-button type="primary" @tap="nav('chenyu/template')">vue模板页</u-button>
+			<u-button type="primary" @tap="nav('chenyu/auto_view')">css实现自动布局</u-button>
+			<u-button type="primary" @tap="nav('we_service/article/list')">文章页面</u-button>
+			<u-button type="primary" @tap="nav('we_service/trivia_books/index')">琐事账簿</u-button>
 		</view>
 	</view>
 </template>
