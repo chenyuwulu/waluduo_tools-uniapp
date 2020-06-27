@@ -1,16 +1,22 @@
 <template>
-	<view class="flex index-page">
-		<u-card :border="true" padding="20" v-for="(item,index) in [1,2,3,4]" :key="index">
-			<view class="" slot="head">
-				标题位置
-			</view>
-			<view class="" slot="body">
-				内容
-			</view>
-			<view class="" slot="foot">
-				页脚
-			</view>
-		</u-card>
+	<view class="chenyu_page">
+		<view class="chenyu_card" v-for="(item,index) in [1,2,3,4]" :key="index">
+			<u-card
+				v-if="true" 
+				margin="0"
+				:border="false">
+				<view class="" slot="head">
+					标题位置
+				</view>
+				<view class="" slot="body">
+					内容
+				</view>
+				<view class="" slot="foot">
+					页脚
+				</view>
+			</u-card>
+		</view>
+		<u-empty v-if="true" text="当前暂无" mode="list" />
 		<!-- 右下角的悬浮图标 -->
 		<uni-fab 
 			ref="fab" 
@@ -70,31 +76,19 @@
 		onShow() {},
 		onLoad(options) {
 			console.log(this)
-			instance.request({
-				url: "index",
-				data: {}
-			}).then(res => {
-				console.log(res)
-			})
+			// instance.request({
+			// 	url: "index",
+			// 	data: {}
+			// }).then(res => {
+			// 	console.log(res)
+			// })
 		},
 		onHide() {},
 		methods:{
 			fab_trigger(e){
-				if(e.item.status == 'add'){
-					uni.navigateTo({
-						url:"add"
-					})
-				}
-				if(e.item.status == 'history'){
-					uni.navigateTo({
-						url:"history"
-					})
-				}
-				if(e.item.status == 'setting'){
-					uni.navigateTo({
-						url:"setting"
-					})
-				}
+				uni.navigateTo({
+					url:e.item.status
+				})
 			},
 			fab_Click(e){
 				console.log(111,e)
@@ -104,8 +98,5 @@
 </script>
 
 <style lang="scss">
-	.index-page{
-		flex-direction: column;
-		padding: 20rpx 20rpx;
-	}
+	
 </style>

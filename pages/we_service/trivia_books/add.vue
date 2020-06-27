@@ -1,5 +1,5 @@
 <template>
-	<view class="flex add-page">
+	<view class="chenyu_page">
 		这是新增便签页面
 	</view>
 </template>
@@ -33,7 +33,5 @@
 </script>
 
 <style lang="scss">
-	.add-page{
-		padding: 20rpx 20rpx;
-	}
+	
 </style>

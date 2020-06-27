@@ -1,9 +1,9 @@
 <template>
-	<view class="chenyu_page update_logo_page">
+	<view class="chenyu_page" style="padding-left: 40rpx;">
 		<u-time-line>
 			<u-time-line-item v-for="(item,index) in list" :key="index">
 				<template v-slot:content>
-					<view>
+					<view class="chenyu_card">
 						<view class="u-order-title" :style="index==0?'color:#000000;font-size: 40rpx;':''">{{item.title}}</view>
 						<view class="u-order-desc" :style="index==0?'color:#000000':''">
 							<view class="text" v-for="(items,idx) in item.content" :key="idx">
@@ -54,25 +54,22 @@
 </script>
 
 <style lang="scss">
-	.update_logo_page{
-		padding: 20rpx 20rpx 20rpx 40rpx;
-		.u-order-title {
-			color: #c8c8c8;
-			font-weight: bold;
-			font-size: 30rpx;
-		}
-		.u-order-desc {
+	.u-order-title {
+		color: #c8c8c8;
+		font-weight: bold;
+		font-size: 30rpx;
+	}
+	.u-order-desc {
+		margin-top: 20rpx;
+		color: #969696;
+		font-size: 30rpx;
+		.text{
 			margin-top: 20rpx;
-			color: #969696;
-			font-size: 30rpx;
-			.text{
-				margin-top: 20rpx;
-			}
 		}
-		.u-order-time {
-			margin-top: 20rpx;
-			color: #c8c8c8;
-			font-size: 26rpx;
-		}
+	}
+	.u-order-time {
+		margin-top: 20rpx;
+		color: #c8c8c8;
+		font-size: 26rpx;
 	}
 </style>

@@ -59,8 +59,17 @@
 /* 	@import "@/components/colorui/main.css";
 	@import "@/components/colorui/icon.css";
 	@import "@/components/colorui/animation.css"; */
+	@import "@/components/uview-ui/index.scss";
 	.chenyu_page{
 		display: flex;
 		flex-direction: column;
+		padding: 20rpx 20rpx 20rpx 20rpx;
+		.chenyu_card{
+			margin-top: 20rpx;
+			margin-bottom: 20rpx;
+			padding: 20rpx 20rpx;
+			border-radius: 10rpx;
+			box-shadow:1rpx 1rpx 10rpx 1rpx #a8a8a8;
+		}
 	}
 </style>
