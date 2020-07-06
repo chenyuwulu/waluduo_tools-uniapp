@@ -78,28 +78,27 @@
 		// 			}
 		// 		]
 		// 	},
-		//琐事便签分包
-			{	"root":"pages/we_service/trivia_books",
+			{	"root":"pages/we_service/trivia_books",//琐事便签分包
 				"pages":[
-					{	"path":"index",
+					{	"path":"index",//琐事便签
 						"style":{
 							"navigationBarTitleText":"琐事便签",
 							"navigationBarBackgroundColor":"#347816"
 						}
 					},
-					{	"path":"add",
+					{	"path":"add",//新建便签
 						"style":{
 							"navigationBarTitleText":"新建便签",
 							"navigationBarBackgroundColor":"#347816"
 						}
 					},
-					{	"path":"history",
+					{	"path":"history",//历史记录
 						"style":{
 							"navigationBarTitleText":"历史记录",
 							"navigationBarBackgroundColor":"#347816"
 						}
 					},
-					{	"path":"setting",
+					{	"path":"setting",//设置
 						"style":{
 							"navigationBarTitleText":"设置",
 							"navigationBarBackgroundColor":"#347816"

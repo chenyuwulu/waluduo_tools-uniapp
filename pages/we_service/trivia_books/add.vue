@@ -1,6 +1,8 @@
 <template>
 	<view class="chenyu_page">
-		这是新增便签页面
+		<view class="category">
+			
+		</view>
 	</view>
 </template>
 
@@ -13,7 +15,11 @@
 		components:{},
 		data() {
 			return {
-				title: 'template'
+				category_list:[
+					{	name:"随机式"	},
+					{	name:"平分式"	},
+					{	name:"轮流式"	}
+				]
 			}
 		},
 		//计算属性
