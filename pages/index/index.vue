@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
@@ -52,6 +53,9 @@
 		},
 		components:{
 			
+		},
+		onShow() {
+			console.log(111,app)
 		},
 		onLoad() {
 			// uni.request({

@@ -43,8 +43,8 @@
 				pattern: {
 					color: '#7A7E83',
 					backgroundColor: '#fff',
-					selectedColor: '#347816',
-					buttonColor: '#347816'
+					selectedColor: '#0081ff',
+					buttonColor: '#0081ff'
 				},
 				fab_list:[{
 						iconPath: '/static/trivia_books/add.png',
@@ -98,5 +98,9 @@
 </script>
 
 <style lang="scss">
-	
+	.chenyu_page{
+		.chenyu_card{
+			box-shadow:0rpx 0rpx 5rpx 0rpx #999999;
+		}
+	}
 </style>

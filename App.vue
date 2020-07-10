@@ -35,7 +35,7 @@
 		onUniNViewMessage() {
 			console.log('对nvue页面发送的数据进行监听')
 		},
-		globalData:{
+		globalData:{//这里放不变的常量，变量统统放到vuex内
 			platform:platform,//平台名称
 			config_id:config_id,//对应配置表的id
 			system_info:uni.getSystemInfoSync(),//获取当前平台下的系统信息
@@ -54,22 +54,19 @@
 	}
 </script>
 
-<style lang="scss">
-	/*每个页面公共css */
-/* 	@import "@/components/colorui/main.css";
-	@import "@/components/colorui/icon.css";
-	@import "@/components/colorui/animation.css"; */
-	@import "@/components/uview-ui/index.scss";
-	.chenyu_page{
+<style lang="scss">/*每个页面公共css */
+	@import "@/components/uview-ui/index.scss";//引入uview的css库
+	.chenyu_page{//统一的box设置
 		display: flex;
 		flex-direction: column;
 		padding: 20rpx 20rpx 20rpx 20rpx;
+		color: #0A0A0A;
 		.chenyu_card{
 			margin-top: 20rpx;
 			margin-bottom: 20rpx;
 			padding: 20rpx 20rpx;
 			border-radius: 10rpx;
-			box-shadow:1rpx 1rpx 10rpx 1rpx #a8a8a8;
+			box-shadow:0rpx 0rpx 5rpx 0rpx #0081ff;
 		}
 	}
 </style>
