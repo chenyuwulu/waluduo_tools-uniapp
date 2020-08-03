@@ -55,7 +55,7 @@
 			
 		},
 		onShow() {
-			console.log(111,app)
+			console.log(111,"https://weiqing.chenyuwulu.top/kong.mp3")
 		},
 		onLoad() {
 			// uni.request({

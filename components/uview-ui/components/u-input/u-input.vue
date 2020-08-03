@@ -16,7 +16,7 @@
 			v-if="type == 'textarea'"
 			class="u-input__input u-input__textarea"
 			:style="[getStyle]"
-			:value="value"
+			:value="defaultValue"
 			:placeholder="placeholder"
 			:placeholderStyle="placeholderStyle"
 			:disabled="disabled"
@@ -24,6 +24,9 @@
 			:fixed="fixed"
 			:focus="focus"
 			:autoHeight="autoHeight"
+			:selection-end="uSelectionEnd"
+			:selection-start="uSelectionStart"
+			:cursor-spacing="getCursorSpacing"
 			@input="handleInput"
 			@blur="handleBlur"
 			@focus="onFocus"
@@ -43,6 +46,8 @@
 			:focus="focus"
 			:confirmType="confirmType"
 			:cursor-spacing="getCursorSpacing"
+			:selection-end="uSelectionEnd"
+			:selection-start="uSelectionStart"
 			@focus="onFocus"
 			@blur="handleBlur"
 			@input="handleInput"
@@ -78,6 +83,8 @@ import Emitter from '../../libs/util/emitter.js';
 	 * @property {String} placeholder placeholder显示值(默认 '请输入内容')
 	 * @property {Boolean} disabled 是否禁用输入框(默认false)
 	 * @property {String Number} maxlength 输入框的最大可输入长度(默认140)
+	 * @property {String Number} selection-start 光标起始位置，自动聚焦时有效，需与selection-end搭配使用（默认-1）
+	 * @property {String Number} maxlength 光标结束位置，自动聚焦时有效，需与selection-start搭配使用（默认-1）
 	 * @property {String Number} cursor-spacing 指定光标与键盘的距离，单位px(默认0)
 	 * @property {String} placeholderStyle placeholder的样式，字符串形式，如"color: red;"(默认 "color: #c0c4cc;")
 	 * @property {String} confirm-type 设置键盘右下角按钮的文字，仅在type为text时生效(默认done)
@@ -184,6 +191,16 @@ export default {
 		cursorSpacing: {
 			type: [Number, String],
 			default: 0
+		},
+		// 光标起始位置，自动聚焦时有效，需与selection-end搭配使用
+		selectionStart: {
+			type: [Number, String],
+			default: -1
+		},
+		// 光标结束位置，自动聚焦时有效，需与selection-start搭配使用
+		selectionEnd: {
+			type: [Number, String],
+			default: -1
 		}
 	},
 	data() {
@@ -194,7 +211,6 @@ export default {
 			validateState: false, // 当前input的验证状态，用于错误时，边框是否改为红色
 			focused: false, // 当前是否处于获得焦点的状态
 			showPassword: false, // 是否预览密码
-			marginRight: 0, // 输入框右边的距离，当获得焦点时各一个后面的距离，避免点击右边图标误触输入框
 		};
 	},
 	watch: {
@@ -206,14 +222,7 @@ export default {
 					value: nVal
 				}
 			})
-			// 值变化，且是右对齐时，计算右侧的清除图标的位置尺寸，避免input-align=right时文字与清除图标重合
-			if(oVal == '' && this.inputAlign == 'right') this.getMarginRight();
 		},
-		focused(nVal) {
-			if(this.clearable && this.value) {
-				this.getMarginRight();
-			}
-		}
 	},
 	computed: {
 		// 因为uniapp的input组件的maxlength组件必须要数值，这里转为数值，给用户可以传入字符串数值
@@ -225,31 +234,27 @@ export default {
 			// 如果没有自定义高度，就根据type为input还是textare来分配一个默认的高度
 			style.minHeight = this.height ? this.height + 'rpx' : this.type == 'textarea' ?
 				this.textareaHeight + 'rpx' : this.inputHeight + 'rpx';
-			style.marginRight = this.marginRight + 'px';
 			style = Object.assign(style, this.customStyle);
 			return style;
 		},
 		//
 		getCursorSpacing() {
 			return Number(this.cursorSpacing);
+		},
+		// 光标起始位置
+		uSelectionStart() {
+			return String(this.selectionStart);
+		},
+		// 光标结束位置
+		uSelectionEnd() {
+			return String(this.selectionEnd);
 		}
 	},
 	created() {
 		// 监听u-form-item发出的错误事件，将输入框边框变红色
 		this.$on('on-form-item-error', this.onFormItemError);
 	},
-	mounted() {
-		this.getMarginRight();
-	},
 	methods: {
-		// 计算输入框的右边距
-		getMarginRight() {
-			this.$nextTick(() => {
-				this.$uGetRect('.u-input__right-icon').then(res => {
-					this.marginRight = res.width;
-				})
-			})
-		},
 		/**
 		 * change 事件
 		 * @param event
@@ -303,11 +308,13 @@ export default {
 .u-input {
 	position: relative;
 	flex: 1;
+	display: flex;
 
 	&__input {
 		//height: $u-form-item-height;
 		font-size: 28rpx;
 		color: $u-main-color;
+		flex: 1;
 	}
 
 	&__textarea {
@@ -316,6 +323,7 @@ export default {
 		color: $u-main-color;
 		padding: 10rpx 0;
 		line-height: normal;
+		flex: 1;
 	}
 
 	&--border {
@@ -329,11 +337,6 @@ export default {
 	}
 
 	&__right-icon {
-		position: absolute;
-		right: 0;
-		top: 50%;
-		z-index: 3;
-		transform: translateY(-50%);
 
 		&__item {
 			margin-left: 10rpx;

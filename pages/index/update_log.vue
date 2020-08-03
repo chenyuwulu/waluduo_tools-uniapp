@@ -1,6 +1,6 @@
 <template>
 	<view class="chenyu_page" style="padding-left: 40rpx;">
-		<u-time-line>
+<!-- 		<u-time-line>
 			<u-time-line-item v-for="(item,index) in list" :key="index">
 				<template v-slot:content>
 					<view class="chenyu_card">
@@ -14,7 +14,16 @@
 					</view>
 				</template>
 			</u-time-line-item>
-		</u-time-line>
+		</u-time-line> -->
+		<chenyu-audioplay>
+			
+		</chenyu-audioplay>
+<!-- 		<chenyu-textarea
+			:value="content"
+			@return_value="return_value"
+		> -->
+			
+		</chenyu-textarea>
 	</view>
 </template>
 
@@ -34,7 +43,8 @@
 						],
 						time:"2020年6月25日"
 					},
-				]
+				],
+				content:""
 			}
 		},
 		//计算属性
@@ -48,7 +58,9 @@
 		},
 		onHide() {},
 		methods:{
-			
+			return_value(e){
+				this.content = e.value
+			}
 		}
 	}
 </script>
