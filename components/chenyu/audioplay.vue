@@ -145,7 +145,7 @@
 							},0)
 						}
 					// #endif
-					// #ifdef MP-WEIXIN
+					// #ifndef H5
 						let get_duration = ()=>{
 							setTimeout(()=>{
 								if(audio_play_object.duration==0){
