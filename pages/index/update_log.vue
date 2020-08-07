@@ -15,15 +15,11 @@
 				</template>
 			</u-time-line-item>
 		</u-time-line> -->
-		<chenyu-audioplay>
-			
-		</chenyu-audioplay>
-<!-- 		<chenyu-textarea
-			:value="content"
-			@return_value="return_value"
-		> -->
-			
-		</chenyu-textarea>
+		<chenyu-audioplay
+			:audio_src="'https://weiqing.chenyuwulu.top/shuangxue.mp3'"
+			:audio_volume ="volume"
+			:is_volume="true"
+		/>
 	</view>
 </template>
 
@@ -44,7 +40,8 @@
 						time:"2020年6月25日"
 					},
 				],
-				content:""
+				content:"",
+				volume:0.8
 			}
 		},
 		//计算属性
@@ -54,7 +51,7 @@
 		onReady() {},
 		onShow() {},
 		onLoad(options) {
-			console.log(this)
+			// console.log(this)
 		},
 		onHide() {},
 		methods:{
