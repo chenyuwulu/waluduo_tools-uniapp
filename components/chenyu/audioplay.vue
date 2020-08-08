@@ -1,6 +1,13 @@
 <template>
 	<view class="audio_play_box">
 		<view class="slider_box">
+<!-- 			<view class="sliders">
+				<u-slider
+					v-model="currentTime"
+					max="282"
+					step="1"
+				/>
+			</view> -->
 			<slider 
 				class="sliders"
 				activeColor="#0081ff"
@@ -120,6 +127,7 @@
 			audio_play_object.volume = this.volume
 			audio_play_object.autoplay = this.audio_autoplay
 			audio_play_object.loop = this.audio_loop
+			audio_play_object.obeyMuteSwitch = this.audio_obeyMuteSwitch
 			this.init_src(this.audio_src)
 			this.on_func()
 		},
@@ -129,6 +137,7 @@
 		},
 		methods:{
 			format(num) {//如果是240秒，格式化出04:00这种模式的结构
+				// return num
 				return '0'.repeat(2 - String(Math.floor(num / 60)).length) + Math.floor(num / 60) + ':' + '0'.repeat(2 - String(Math.floor(num % 60)).length) + Math.floor(num % 60)
 			},
 			init_src(src){//初始化当前播放器的播放源
@@ -188,7 +197,7 @@
 				this.is_play?audio_play_object.pause():audio_play_object.play()
 			},
 			volume_edit_slider(e){//音量进度条修改事件
-				console.log(this)
+				console.log(audio_play_object)
 				this.volume = e.detail.value
 				audio_play_object.volume = e.detail.value
 				this.volume_slider_doing = false
@@ -201,11 +210,15 @@
 			edit_slider(e){//进度条修改事件
 				console.log(e)
 				audio_play_object.seek(e.detail.value)
+				// 微信小程序在拖动进度条上有问题
 				// #ifdef MP-WEIXIN
 					this.currentTime = e.detail.value
 					audio_play_object.pause()
 				// #endif
-				// this.is_play?"":audio_play_object.play()
+				// #ifdef H5
+					this.is_play?"":audio_play_object.play()
+				// #endif
+				
 				this.slider_doing = false
 			},
 			editing_slider(e){//修改进度条中的事件，doing
