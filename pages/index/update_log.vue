@@ -17,7 +17,7 @@
 		</u-time-line> -->
 		<chenyu-audioplay
 			:audio_src="src"
-			:audio_max="282"
+			:audio_max="0"
 			:audio_volume ="volume"
 			:is_volume="true"
 		/>
@@ -46,7 +46,7 @@
 				src:'XNDc4NzAwMzk4OA==',
 				// #endif
 				// #ifndef MP-ALIPAY
-				src:'https://weiqing.chenyuwulu.top/kong.mp3',
+				src:'https://weiqing.chenyuwulu.top/kong1mb.mp3',
 				// #endif
 				volume:0.8
 			}

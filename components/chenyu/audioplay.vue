@@ -127,12 +127,12 @@
 			audio_play_object.volume = this.volume
 			audio_play_object.autoplay = this.audio_autoplay
 			audio_play_object.loop = this.audio_loop
-			audio_play_object.obeyMuteSwitch = this.audio_obeyMuteSwitch
+			// audio_play_object.obeyMuteSwitch = this.audio_obeyMuteSwitch
 			this.init_src(this.audio_src)
 			this.on_func()
 		},
 		beforeDestroy() {//组件实例销毁前调用
-			// audio_play_object.stop()
+			audio_play_object.stop()
 			audio_play_object.destroy()
 		},
 		methods:{
@@ -143,6 +143,7 @@
 			init_src(src){//初始化当前播放器的播放源
 				audio_play_object.src =src//更新播放器对应的src
 				if(this.audio_max ==0){//如果没有设置音频时长，则自动获取
+				console.log("这是新增src",audio_play_object.duration)
 					// #ifdef H5
 						let get_duration = ()=>{
 							setTimeout(()=>{
@@ -181,10 +182,11 @@
 					})
 				})
 				audio_play_object.onTimeUpdate((e)=>{//音频播放进度监听事件
-					console.log(this.slider_doing)
+					console.log(audio_play_object.currentTime)
 					if(!this.slider_doing){//如果没在拖动中，就更新进度条
 						this.currentTime = audio_play_object.currentTime
-						console.log(audio_play_object.currentTime)
+						this.$forceUpdate()
+						// console.log(audio_play_object.currentTime)
 						uni.hideLoading()
 					}
 				})
@@ -197,7 +199,6 @@
 				this.is_play?audio_play_object.pause():audio_play_object.play()
 			},
 			volume_edit_slider(e){//音量进度条修改事件
-				console.log(audio_play_object)
 				this.volume = e.detail.value
 				audio_play_object.volume = e.detail.value
 				this.volume_slider_doing = false
@@ -208,17 +209,8 @@
 				this.volume_slider_doing = true
 			},
 			edit_slider(e){//进度条修改事件
-				console.log(e)
+				this.is_play?"":audio_play_object.play()
 				audio_play_object.seek(e.detail.value)
-				// 微信小程序在拖动进度条上有问题
-				// #ifdef MP-WEIXIN
-					this.currentTime = e.detail.value
-					audio_play_object.pause()
-				// #endif
-				// #ifdef H5
-					this.is_play?"":audio_play_object.play()
-				// #endif
-				
 				this.slider_doing = false
 			},
 			editing_slider(e){//修改进度条中的事件，doing
