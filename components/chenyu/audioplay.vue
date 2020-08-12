@@ -1,13 +1,6 @@
 <template>
 	<view class="audio_play_box">
 		<view class="slider_box">
-<!-- 			<view class="sliders">
-				<u-slider
-					v-model="currentTime"
-					max="282"
-					step="1"
-				/>
-			</view> -->
 			<slider 
 				class="sliders"
 				activeColor="#0081ff"
@@ -177,9 +170,21 @@
 					this.is_play = false
 				})
 				audio_play_object.onWaiting(()=>{//资源加载中
-					uni.showLoading({
-						title:"正在加载资源"
-					})
+					// #ifdef MP-WEIXIN
+					
+					// #endif
+					// #ifndef MP-WEIXIN
+						uni.showLoading({
+							title:"正在加载资源"
+						})
+					// #endif
+					
+				})
+				audio_play_object.onSeeking(()=>{//doing
+					console.log('onSeeking')
+				})
+				audio_play_object.onSeeked(()=>{//doed
+					console.log('onSeeked')
 				})
 				audio_play_object.onTimeUpdate((e)=>{//音频播放进度监听事件
 					console.log(audio_play_object.currentTime)
@@ -190,12 +195,18 @@
 						uni.hideLoading()
 					}
 				})
+				audio_play_object.onError((err)=>{
+					console.log('这是监听报错',err)
+				})
 				audio_play_object.onEnded((e)=>{//音频自然播放结束
 					this.currentTime = 0
 					this.is_play = false
 				})
 			},
 			play_pause(e){//播放和暂停事件
+				// #ifdef MP-WEIXIN
+					uni.hideLoading()
+				// #endif
 				this.is_play?audio_play_object.pause():audio_play_object.play()
 			},
 			volume_edit_slider(e){//音量进度条修改事件
@@ -209,8 +220,16 @@
 				this.volume_slider_doing = true
 			},
 			edit_slider(e){//进度条修改事件
-				this.is_play?"":audio_play_object.play()
-				audio_play_object.seek(e.detail.value)
+				// #ifdef MP-WEIXIN
+					audio_play_object.seek(e.detail.value)
+					this.currentTime = e.detail.value
+					audio_play_object.pause()
+				// #endif
+				// #ifndef MP-WEIXIN
+					this.is_play?"":audio_play_object.play()
+					audio_play_object.seek(e.detail.value)
+				// #endif
+					
 				this.slider_doing = false
 			},
 			editing_slider(e){//修改进度条中的事件，doing
