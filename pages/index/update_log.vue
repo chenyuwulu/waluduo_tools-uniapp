@@ -21,6 +21,9 @@
 			:audio_volume ="volume"
 			:is_volume="true"
 		/>
+		<chenyu-textarea
+			
+		/>
 	</view>
 </template>
 
@@ -46,7 +49,7 @@
 				src:'XNDc4NzAwMzk4OA==',
 				// #endif
 				// #ifndef MP-ALIPAY
-				src:'https://weiqing.chenyuwulu.top/kong1mb.mp3',
+				src:'https://weiqing.chenyuwulu.top/kong.mp3',
 				// #endif
 				volume:0.8
 			}

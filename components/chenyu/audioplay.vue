@@ -94,7 +94,9 @@
 				bool?this.on_func():''
 			},
 			audio_startTime(e){
-				audio_play_object.startTime = e
+				// #ifdef MP-WEIXIN || MP-BAIDU ||MP-TOUTIAO
+					audio_play_object.startTime = e
+				// #endif
 			},
 			audio_autoplay(e){
 				audio_play_object.autoplay = e
@@ -120,13 +122,16 @@
 			audio_play_object.volume = this.volume
 			audio_play_object.autoplay = this.audio_autoplay
 			audio_play_object.loop = this.audio_loop
-			// audio_play_object.obeyMuteSwitch = this.audio_obeyMuteSwitch
+			audio_play_object.startTime = this.audio_startTime
+			// #ifdef MP-WEIXIN || MP-BAIDU ||MP-TOUTIAO
+				audio_play_object.obeyMuteSwitch = this.audio_obeyMuteSwitch
+			// #endif
 			this.init_src(this.audio_src)
 			this.on_func()
 		},
 		beforeDestroy() {//组件实例销毁前调用
 			audio_play_object.stop()
-			audio_play_object.destroy()
+			// audio_play_object.destroy()
 		},
 		methods:{
 			format(num) {//如果是240秒，格式化出04:00这种模式的结构
@@ -136,8 +141,8 @@
 			init_src(src){//初始化当前播放器的播放源
 				audio_play_object.src =src//更新播放器对应的src
 				if(this.audio_max ==0){//如果没有设置音频时长，则自动获取
-				console.log("这是新增src",audio_play_object.duration)
-					// #ifdef H5
+				// console.log("新增src",audio_play_object.duration)
+					// #ifdef H5 || MP-360
 						let get_duration = ()=>{
 							setTimeout(()=>{
 								if(isNaN(audio_play_object.duration)){
@@ -148,7 +153,7 @@
 							},0)
 						}
 					// #endif
-					// #ifndef H5
+					// #ifndef H5 || MP-360
 						let get_duration = ()=>{
 							setTimeout(()=>{
 								if(audio_play_object.duration==0){
@@ -181,13 +186,13 @@
 					
 				})
 				audio_play_object.onSeeking(()=>{//doing
-					console.log('onSeeking')
+					// console.log('onSeeking')
 				})
 				audio_play_object.onSeeked(()=>{//doed
-					console.log('onSeeked')
+					// console.log('onSeeked')
 				})
 				audio_play_object.onTimeUpdate((e)=>{//音频播放进度监听事件
-					console.log(audio_play_object.currentTime)
+					// console.log(audio_play_object.currentTime,audio_play_object)
 					if(!this.slider_doing){//如果没在拖动中，就更新进度条
 						this.currentTime = audio_play_object.currentTime
 						this.$forceUpdate()
@@ -212,12 +217,12 @@
 			volume_edit_slider(e){//音量进度条修改事件
 				this.volume = e.detail.value
 				audio_play_object.volume = e.detail.value
-				this.volume_slider_doing = false
+				// this.volume_slider_doing = false
 			},
 			volume_editing_slider(e){//音量修改进度条中的事件，doing
 				this.volume = e.detail.value
 				audio_play_object.volume = e.detail.value
-				this.volume_slider_doing = true
+				// this.volume_slider_doing = true
 			},
 			edit_slider(e){//进度条修改事件
 				// #ifdef MP-WEIXIN

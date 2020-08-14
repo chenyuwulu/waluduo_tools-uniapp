@@ -78,34 +78,34 @@
 		// 			}
 		// 		]
 		// 	},
-			{	"root":"pages/we_service/trivia_books",//琐事便签分包
-				"pages":[
-					{	"path":"index",//琐事便签
-						"style":{
-							"navigationBarTitleText":"琐事便签",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"add",//新建便签
-						"style":{
-							"navigationBarTitleText":"新建便签",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"history",//历史记录
-						"style":{
-							"navigationBarTitleText":"历史记录",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"setting",//设置
-						"style":{
-							"navigationBarTitleText":"设置",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					}
-				]
-			}
+			// {	"root":"pages/we_service/trivia_books",//琐事便签分包
+			// 	"pages":[
+			// 		{	"path":"index",//琐事便签
+			// 			"style":{
+			// 				"navigationBarTitleText":"琐事便签",
+			// 				"navigationBarBackgroundColor":"#0081ff"
+			// 			}
+			// 		},
+			// 		{	"path":"add",//新建便签
+			// 			"style":{
+			// 				"navigationBarTitleText":"新建便签",
+			// 				"navigationBarBackgroundColor":"#0081ff"
+			// 			}
+			// 		},
+			// 		{	"path":"history",//历史记录
+			// 			"style":{
+			// 				"navigationBarTitleText":"历史记录",
+			// 				"navigationBarBackgroundColor":"#0081ff"
+			// 			}
+			// 		},
+			// 		{	"path":"setting",//设置
+			// 			"style":{
+			// 				"navigationBarTitleText":"设置",
+			// 				"navigationBarBackgroundColor":"#0081ff"
+			// 			}
+			// 		}
+			// 	]
+			// }
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
