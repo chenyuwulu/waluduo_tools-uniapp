@@ -183,7 +183,6 @@
 							title:"正在加载资源"
 						})
 					// #endif
-					
 				})
 				audio_play_object.onSeeking(()=>{//doing
 					// console.log('onSeeking')
@@ -213,6 +212,13 @@
 					uni.hideLoading()
 				// #endif
 				this.is_play?audio_play_object.pause():audio_play_object.play()
+				// #ifdef APP-PLUS
+					if(!this.is_play){
+						uni.showLoading({
+							title:"正在加载资源"
+						})
+					}
+				// #endif
 			},
 			volume_edit_slider(e){//音量进度条修改事件
 				this.volume = e.detail.value
@@ -233,6 +239,11 @@
 				// #ifndef MP-WEIXIN
 					this.is_play?"":audio_play_object.play()
 					audio_play_object.seek(e.detail.value)
+					// #ifdef APP-PLUS
+						uni.showLoading({
+							title:"正在加载资源"
+						})
+					// #endif
 				// #endif
 					
 				this.slider_doing = false
@@ -250,7 +261,6 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		// border: 1rpx solid #0081ff;
 		box-shadow:1rpx 1rpx 18rpx 1rpx rgba(#999999,0.47);
 		border-radius: 20rpx;
 		min-height: 150rpx;

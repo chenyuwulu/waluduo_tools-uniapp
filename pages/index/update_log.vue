@@ -1,6 +1,6 @@
 <template>
 	<view class="chenyu_page" style="padding-left: 40rpx;">
-<!-- 		<u-time-line>
+		<u-time-line>
 			<u-time-line-item v-for="(item,index) in list" :key="index">
 				<template v-slot:content>
 					<view class="chenyu_card">
@@ -14,16 +14,16 @@
 					</view>
 				</template>
 			</u-time-line-item>
-		</u-time-line> -->
+		</u-time-line>
 		<chenyu-audioplay
 			:audio_src="src"
-			:audio_max="0"
+			:audio_max="281"
 			:audio_volume ="volume"
 			:is_volume="true"
 		/>
-		<chenyu-textarea
+<!-- 		<chenyu-textarea
 			
-		/>
+		/> -->
 	</view>
 </template>
 
@@ -45,13 +45,8 @@
 					},
 				],
 				content:"",
-				// #ifdef MP-ALIPAY
-				src:'XNDc4NzAwMzk4OA==',
-				// #endif
-				// #ifndef MP-ALIPAY
-				src:'https://weiqing.chenyuwulu.top/kong.mp3',
-				// #endif
-				volume:0.8
+				src:"",
+				volume:0.8,
 			}
 		},
 		//计算属性
@@ -61,6 +56,12 @@
 		onReady() {},
 		onShow() {},
 		onLoad(options) {
+			// #ifdef MP-ALIPAY
+				this.src = 'XNDc4NzAwMzk4OA'
+			// #endif
+			// #ifndef MP-ALIPAY
+				this.src = "https://weiqing.chenyuwulu.top/kong.mp3"
+			// #endif
 			// console.log(this)
 		},
 		onHide() {},
