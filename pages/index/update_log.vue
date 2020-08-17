@@ -1,6 +1,6 @@
 <template>
 	<view class="chenyu_page" style="padding-left: 40rpx;">
-		<u-time-line>
+<!-- 		<u-time-line>
 			<u-time-line-item v-for="(item,index) in list" :key="index">
 				<template v-slot:content>
 					<view class="chenyu_card">
@@ -14,16 +14,15 @@
 					</view>
 				</template>
 			</u-time-line-item>
-		</u-time-line>
-		<chenyu-audioplay
+		</u-time-line> -->
+<!-- 		<chenyu-audioplay
 			:audio_src="src"
 			:audio_max="281"
 			:audio_volume ="volume"
 			:is_volume="true"
-		/>
-<!-- 		<chenyu-textarea
-			
 		/> -->
+		<!-- <chenyu-textarea /> -->
+		<chenyu-poster ref="daochu" />
 	</view>
 </template>
 
@@ -56,6 +55,10 @@
 		onReady() {},
 		onShow() {},
 		onLoad(options) {
+			setTimeout(()=>{
+				this.$refs.daochu.export_image()
+			},1000)
+			console.log(this.$refs.daochu)
 			// #ifdef MP-ALIPAY
 				this.src = 'XNDc4NzAwMzk4OA'
 			// #endif

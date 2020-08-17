@@ -1,12 +1,12 @@
 <template>
 	<view class="textarea_box">
-		<textarea v-show="focus_status==true"
+		<textarea v-if="focus_status==true"
 			class="textarea"
 			:style="{
 				width:width,
 				height:height
 			}"
-			:focus="true"
+			:focus="focus"
 			:controlled="true"
 			:show-count="false"
 			@focus="func_focus"
@@ -54,6 +54,8 @@
 					setTimeout(()=>{
 						this.textarea_value = a
 					},0)
+				} else {
+					this.focus = false
 				}
 			}
 		},
