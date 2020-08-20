@@ -23,6 +23,7 @@
 		/> -->
 		<!-- <chenyu-textarea /> -->
 		<chenyu-poster ref="daochu" />
+		<button type="default" @tap="chufa">触发</button>
 	</view>
 </template>
 
@@ -55,10 +56,6 @@
 		onReady() {},
 		onShow() {},
 		onLoad(options) {
-			setTimeout(()=>{
-				this.$refs.daochu.export_image()
-			},1000)
-			console.log(this.$refs.daochu)
 			// #ifdef MP-ALIPAY
 				this.src = 'XNDc4NzAwMzk4OA'
 			// #endif
@@ -71,6 +68,9 @@
 		methods:{
 			return_value(e){
 				this.content = e.value
+			},
+			chufa(){
+				this.$refs.daochu.export_image()
 			}
 		}
 	}

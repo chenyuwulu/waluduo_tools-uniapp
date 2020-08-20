@@ -1,6 +1,17 @@
 <template>
 	<view class="audio_play_box">
 		<view class="slider_box">
+<!-- 			<view class="sliders">
+				<u-slider
+					activeColor="#0081ff"
+					:max="audio_max==0?slider_max:audio_max"
+					:step="1"
+					blockWidth="40"
+					@start="edit_slider"
+					@end="edit_slider"
+					@moving="editing_slider"
+					v-model="currentTime" />
+			</view> -->
 			<slider 
 				class="sliders"
 				activeColor="#0081ff"
@@ -26,6 +37,17 @@
 					@change="volume_edit_slider"
 					@changing="volume_editing_slider"
 					:step="0.01" />
+<!-- 					<view class="sliders">
+						<u-slider
+							activeColor="#0081ff"
+							:max="100"
+							:step="1"
+							blockWidth="30"
+							@start="volume_edit_slider"
+							@end="volume_edit_slider"
+							@moving="volume_editing_slider"
+							v-model="volume" />
+					</view> -->
 					<view class="">
 						{{parseInt(volume*100)}}
 					</view>
@@ -191,7 +213,7 @@
 					// console.log('onSeeked')
 				})
 				audio_play_object.onTimeUpdate((e)=>{//音频播放进度监听事件
-					// console.log(audio_play_object.currentTime,audio_play_object)
+					// console.log(this.slider_max)
 					if(!this.slider_doing){//如果没在拖动中，就更新进度条
 						this.currentTime = audio_play_object.currentTime
 						this.$forceUpdate()
@@ -289,7 +311,8 @@
 				align-items: center;
 				.sliders{
 					flex: 1;
-					margin-left: 15rpx;
+					margin-left: 30rpx;
+					margin-right: 15rpx;
 				}
 			}
 			.play{
