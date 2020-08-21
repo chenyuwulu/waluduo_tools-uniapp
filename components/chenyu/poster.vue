@@ -60,7 +60,7 @@
 			
 		},
 		methods:{
-			export_image(){
+			async export_image(){
 				// this.save_buffer.then(filePath => {
 				let ctx = uni.createCanvasContext('id_poster',this)
 				uni.getImageInfo({
@@ -82,6 +82,9 @@
 									})
 								}
 							})
+							setTimeout(()=>{
+								resolve()
+							},1000)
 						}).then(()=>{
 							ctx.draw(false,()=>{
 								uni.authorize({
@@ -156,7 +159,7 @@
 			geturlimage(index){//返回一个网络地址图片的信息
 				return new Promise((resolve,reject)=>{
 					uni.getImageInfo({
-						src:this.arr_img[index],
+						src:this.arr_img[index].data,
 						success: (res) => {
 							resolve(res)
 						},
