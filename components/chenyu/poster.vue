@@ -24,7 +24,8 @@
 			},
 			bj_img:{//背景图片
 				type:String,
-				default:"https://weiqing.chenyuwulu.top/logo.jpg"
+				default:"https://weiqing.chenyuwulu.top/banner.png"
+				// default:"https://weiqing.chenyuwulu.top/logo.jpg"
 			},
 			arr_img:{//嵌入图片，可一张，也可多张
 				type:Array,
@@ -43,7 +44,8 @@
 						height:100,
 						left:100,
 						top:100,
-						data:"https://weiqing.chenyuwulu.top/logo.jpg"
+						data:"https://weiqing.chenyuwulu.top/banner.png"
+						// data:"https://weiqing.chenyuwulu.top/logo.jpg"
 					}
 				]
 			}
@@ -70,21 +72,30 @@
 						ctx.drawImage(res.path, 0, 0, Number(this.width), Number(this.height))
 						//以下是其他图
 						new Promise((resolve,reject)=>{
+							let counter = 0
+							const arr_img_length = this.arr_img.length
 							this.arr_img.forEach((item,index)=>{
+								counter++
 								if(item.type=="url"){
 									this.geturlimage(index).then((z)=>{
 										ctx.drawImage(z.path, item.left, item.top, item.width, item.height)
+										new Promise((resolve,reject)=>{
+											resolve()
+										})
 									})
 								}
 								if(item.type=="buffer"){
 									this.save_buffer(index).then((filePath)=>{
 										ctx.drawImage(filePath, item.left, item.top, item.width, item.height)
+										new Promise((resolve,reject)=>{
+											resolve()
+										})
 									})
 								}
+								if(counter === arr_img_length){
+									resolve()
+								}
 							})
-							setTimeout(()=>{
-								resolve()
-							},1000)
 						}).then(()=>{
 							ctx.draw(false,()=>{
 								uni.authorize({
@@ -140,7 +151,7 @@
 				})
 				// })
 			},
-			save_buffer(index){//将buffer图片写入本地临时路径中
+			async save_buffer(index){//将buffer图片写入本地临时路径中
 				return new Promise((resolve, reject) => {//buffer二维码数据
 					let filePath = `${wx.env.USER_DATA_PATH}/poster`+index//微信小程序的保存路径
 					uni.getFileSystemManager().writeFile({//将buffer图片保存成本地临时地址
@@ -156,7 +167,7 @@
 					})
 				})
 			},
-			geturlimage(index){//返回一个网络地址图片的信息
+			async geturlimage(index){//返回一个网络地址图片的信息
 				return new Promise((resolve,reject)=>{
 					uni.getImageInfo({
 						src:this.arr_img[index].data,
