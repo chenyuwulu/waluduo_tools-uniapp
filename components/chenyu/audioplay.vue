@@ -277,7 +277,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 	.audio_play_box{
 		display: flex;
 		flex-direction: column;
