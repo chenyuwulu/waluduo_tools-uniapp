@@ -93,6 +93,15 @@
 									uni.saveImageToPhotosAlbum({//保存图片到系统相册
 										filePath:canvas_data.tempFilePath,
 										success:(save)=>{
+											uni.saveFile({
+												tempFilePath: canvas_data.tempFilePath,
+												success:(zz)=> {
+													console.log(zz)
+												},
+												fail:(err)=>{
+													console.log(err)
+												}
+											})
 											uni.hideLoading()
 											this.$emit("export_success")
 										}

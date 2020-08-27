@@ -22,7 +22,7 @@
 			:is_volume="true"
 		/> -->
 		<!-- <chenyu-textarea /> -->
-<!-- 		<chenyu-poster 
+		<chenyu-poster 
 			ref="daochu" 
 			:arr_img="post_arr" 
 			:canvas_width="500"
@@ -30,7 +30,7 @@
 			@export_loading="export_loading"
 			@export_success="export_success"
 			:background_img="background_img" />
-		<button type="default" @tap="chufa">触发</button> -->
+		<button type="default" @tap="chufa">触发</button>
 		<chenyu-imagecache>
 			<image class="" src="../we_service/trivia_books/static/logo.png" mode="scaleToFill"></image>
 		</chenyu-imagecache>
