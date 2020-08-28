@@ -37,27 +37,27 @@
 		}
 	],
 	"subPackages": [
-		// //个人测试分包
-		// 	{	"root": "pages/chenyu",
-		// 		"pages": [
-		// 			{	"path":"auto_view",
-		// 				"style":{
-		// 					"navigationBarTitleText": "auto_view",
-		// 					"usingComponents":{
+		//个人测试分包
+			{	"root": "pages/chenyu",
+				"pages": [
+					{	"path":"auto_view",
+						"style":{
+							"navigationBarTitleText": "auto_view",
+							"usingComponents":{
 								
-		// 					}
-		// 				}
-		// 			},
-		// 			{	"path":"template",
-		// 				"style":{
-		// 					"navigationBarTitleText": "模板案例页面",
-		// 					"usingComponents":{
+							}
+						}
+					},
+					{	"path":"poster_template",
+						"style":{
+							"navigationBarTitleText": "海报模板",
+							"usingComponents":{
 								
-		// 					}
-		// 				}
-		// 			}
-		// 		]
-		// 	},
+							}
+						}
+					}
+				]
+			}
 		// //文章分包
 		// 	{	"root": "pages/we_service/article",
 		// 		"pages": [

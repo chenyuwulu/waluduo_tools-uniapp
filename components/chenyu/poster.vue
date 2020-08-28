@@ -74,16 +74,32 @@
 				ctx.drawImage(background_img[1].path, 0, 0, Number(this.canvas_width), Number(this.canvas_height))
 				for(let i=0,length=array_img.length;i<length;i++){
 					if(array_img[i].type=="url"){
+						ctx.save()
+						ctx.beginPath()
+						ctx.arc(array_img[i].width / 2 + array_img[i].left, array_img[i].height / 2 + array_img[i].top, array_img[i].width / 2, 0, Math.PI * 2, false)
+						ctx.clip()
 						let x = await uni.getImageInfo({src:array_img[i].data})
 						ctx.drawImage(x[1].path, array_img[i].left, array_img[i].top, array_img[i].width, array_img[i].height)
+						ctx.restore()
 					}
 					if(array_img[i].type=="buffer"){
+						ctx.save()
+						ctx.beginPath()
+						ctx.arc(array_img[i].width / 2 + array_img[i].left, array_img[i].height / 2 + array_img[i].top, array_img[i].width / 2, 0, Math.PI * 2, false)
+						ctx.clip()
 						let filePath = await this.save_buffer(i)
 						ctx.drawImage(filePath, array_img[i].left, array_img[i].top, array_img[i].width, array_img[i].height)
+						ctx.restore()
+					}
+					if(array_img[i].type=="text"){
+						ctx.setFillStyle(array_img[i].fillstyle)
+						ctx.setTextBaseline('top')
+						ctx.setTextAlign('left')
+						ctx.setFontSize(array_img[i].size)
+						ctx.fillText(array_img[i].data, array_img[i].left, array_img[i].top)
 					}
 				}
 				ctx.draw(false,()=>{
-					uni.hideLoading()
 					uni.authorize({//检测有无权限写入文件
 						scope: 'scope.writePhotosAlbum',
 						success:(res)=>{
@@ -93,15 +109,6 @@
 									uni.saveImageToPhotosAlbum({//保存图片到系统相册
 										filePath:canvas_data.tempFilePath,
 										success:(save)=>{
-											uni.saveFile({
-												tempFilePath: canvas_data.tempFilePath,
-												success:(zz)=> {
-													console.log(zz)
-												},
-												fail:(err)=>{
-													console.log(err)
-												}
-											})
 											uni.hideLoading()
 											this.$emit("export_success")
 										}
