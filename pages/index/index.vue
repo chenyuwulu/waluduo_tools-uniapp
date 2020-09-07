@@ -29,10 +29,11 @@
 					// 	name:"css实现自动布局",
 					// 	url:"/pages/chenyu/auto_view"
 					// },
-					// {
-					// 	name:"文章页面",
-					// 	url:"/pages/we_service/article/list"
-					// },
+					{
+						name:"导出页面",
+						icon:"more-circle",
+						url:"/pages/chenyu/poster_template"
+					},
 					{
 						name:"琐事便签",
 						icon:"order",

@@ -1,6 +1,7 @@
 <template>
 	<view class="page_box">
 		<canvas 
+			id="id_poster"
 			canvas-id="id_poster"
 			:style="{
 				width:canvas_width+'px',
@@ -107,6 +108,20 @@
 							})
 						}
 					})
+				})
+			},
+			async export_image_canvas_2d(){//采用canavs2d的方式来输出
+				const query = uni.createSelectorQuery()
+				uni.createSelectorQuery().select('#id_poster').fields({ node: true, size: true }).exec((node_res) => {
+					const canvas = node_res[0].node
+					const ctx = canvas.getContext('2d')
+					
+					const dpr = uni.getSystemInfoSync().pixelRatio
+					canvas.width = node_res[0].width * dpr
+					canvas.height = node_res[0].height * dpr
+					ctx.scale(dpr, dpr)
+					
+					ctx.fillRect(0, 0, 100, 100)
 				})
 			},
 			save_buffer(index){//将buffer图片写入本地临时路径中

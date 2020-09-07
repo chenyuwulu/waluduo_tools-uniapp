@@ -279,12 +279,14 @@ export default {
 	@import "../../libs/css/style.components.scss";
 
 	.u-countdown {
-		display: inline-flex;
+		/* #ifndef APP-NVUE */
+		display: inline-flex;		
+		/* #endif */
 		align-items: center;
 	}
 
 	.u-countdown-item {
-		display: flex;
+		@include vue-flex;
 		align-items: center;
 		justify-content: center;
 		padding: 2rpx;
@@ -300,7 +302,7 @@ export default {
 	}
 
 	.u-countdown-colon {
-		display: flex;
+		@include vue-flex;
 		justify-content: center;
 		padding: 0 5rpx;
 		line-height: 1;

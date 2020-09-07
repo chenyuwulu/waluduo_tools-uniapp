@@ -525,7 +525,7 @@ export default {
 @import '../../libs/css/style.components.scss';
 
 .u-upload {
-	display: flex;
+	@include vue-flex;
 	flex-wrap: wrap;
 	align-items: center;
 }
@@ -538,7 +538,9 @@ export default {
 	background: rgb(244, 245, 246);
 	position: relative;
 	border-radius: 10rpx;
-	display: inline-flex;
+	/* #ifndef APP-NVUE */
+	display: inline-block;
+	/* #endif */
 	align-items: center;
 	justify-content: center;
 }
@@ -578,13 +580,13 @@ export default {
 	border-radius: 100rpx;
 	width: 44rpx;
 	height: 44rpx;
-	display: flex;
+	@include vue-flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .u-icon {
-	display: flex;
+	@include vue-flex;
 	align-items: center;
 	justify-content: center;
 }

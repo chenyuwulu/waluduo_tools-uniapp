@@ -182,7 +182,9 @@
 	@import "../../libs/css/style.components.scss";
 
 	.u-avatar {
-		display: inline-flex;
+		/* #ifndef APP-NVUE */
+		display: inline-flex;		
+		/* #endif */
 		align-items: center;
 		justify-content: center;
 		font-size: 28rpx;
@@ -200,7 +202,7 @@
 			width: 32rpx;
 			color: #ffffff;
 			height: 32rpx;
-			display: flex;
+			@include vue-flex;
 			justify-content: center;
 			align-items: center;
 			border-radius: 100rpx;
@@ -227,7 +229,7 @@
 			width: 32rpx;
 			color: #ffffff;
 			height: 32rpx;
-			display: flex;
+			@include vue-flex;
 			justify-content: center;
 			align-items: center;
 			border-radius: 100rpx;
