@@ -50,29 +50,33 @@
 				ctx.drawImage(background_img[1].path, 0, 0, Number(this.canvas_width), Number(this.canvas_height))
 				for(let i=0,length=array_img.length;i<length;i++){
 					if(array_img[i].type=="url"){
-						ctx.save()
-						ctx.beginPath()
-						ctx.arc(array_img[i].width / 2 + array_img[i].left, array_img[i].height / 2 + array_img[i].top, array_img[i].width / 2, 0, Math.PI * 2, false)
-						ctx.clip()
+						if(array_img[i].round==true){
+							ctx.save()
+							ctx.beginPath()
+							ctx.arc(Number(array_img[i].width) / 2 + Number(array_img[i].left), Number(array_img[i].height) / 2 + Number(array_img[i].top), Number(array_img[i].width) / 2, 0, Math.PI * 2, false)
+							ctx.clip()
+						}
 						let x = await uni.getImageInfo({src:array_img[i].data})
-						ctx.drawImage(x[1].path, array_img[i].left, array_img[i].top, array_img[i].width, array_img[i].height)
+						ctx.drawImage(x[1].path, Number(array_img[i].left), Number(array_img[i].top), Number(array_img[i].width), Number(array_img[i].height))
 						ctx.restore()
 					}
 					if(array_img[i].type=="buffer"){
-						ctx.save()
-						ctx.beginPath()
-						ctx.arc(array_img[i].width / 2 + array_img[i].left, array_img[i].height / 2 + array_img[i].top, array_img[i].width / 2, 0, Math.PI * 2, false)
-						ctx.clip()
+						if(array_img[i].round==true){
+							ctx.save()
+							ctx.beginPath()
+							ctx.arc(Number(array_img[i].width) / 2 + Number(array_img[i].left), Number(array_img[i].height) / 2 + Number(array_img[i].top), Number(array_img[i].width) / 2, 0, Math.PI * 2, false)
+							ctx.clip()
+						}
 						let filePath = await this.save_buffer(i)
-						ctx.drawImage(filePath, array_img[i].left, array_img[i].top, array_img[i].width, array_img[i].height)
+						ctx.drawImage(filePath, Number(array_img[i].left), Number(array_img[i].top), Number(array_img[i].width), Number(array_img[i].height))
 						ctx.restore()
 					}
 					if(array_img[i].type=="text"){
-						ctx.setFillStyle(array_img[i].fillstyle)
+						ctx.setFillStyle(array_img[i].color)
 						ctx.setTextBaseline('top')
 						ctx.setTextAlign('center')
-						ctx.setFontSize(array_img[i].size)
-						ctx.fillText(array_img[i].data, array_img[i].left, array_img[i].top)
+						ctx.setFontSize(Number(array_img[i].size))
+						ctx.fillText(array_img[i].data, Number(array_img[i].left), Number(array_img[i].top))
 					}
 				}
 				ctx.draw(false,()=>{

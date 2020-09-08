@@ -30,15 +30,15 @@
 					// 	url:"/pages/chenyu/auto_view"
 					// },
 					{
-						name:"导出页面",
-						icon:"more-circle",
+						name:"自定义导出图片",
+						icon:"order",
 						url:"/pages/chenyu/poster_template"
 					},
-					{
-						name:"琐事便签",
-						icon:"order",
-						url:"/pages/we_service/trivia_books/index"
-					},
+					// {
+					// 	name:"琐事便签",
+					// 	icon:"order",
+					// 	url:"/pages/we_service/trivia_books/index"
+					// },
 					{
 						name:"更新日志",
 						icon:"calendar",
