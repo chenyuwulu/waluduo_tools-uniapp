@@ -1,11 +1,17 @@
 <template>
 	<view
 		class="tui-navigation-bar"
-		:class="{ 'tui-bar-line': opacity > 0.85 && splitLine, 'tui-navbar-fixed': isFixed, 'tui-backdrop__filter': backdropFilter }"
-		:style="{ height: height + 'px', backgroundColor:backgroundColor,opacity:opacity }"
+		:class="{ 'tui-bar-line': opacity > 0.85 && splitLine, 'tui-navbar-fixed': isFixed, 'tui-backdrop__filter': backdropFilter && dropDownOpacity > 0  }"
+		:style="{ height: height + 'px', backgroundColor: `rgba(${background},${opacity})`, opacity: dropDownOpacity, zIndex: isFixed ? zIndex : 'auto' }"
 	>
 		<view class="tui-status-bar" :style="{ height: statusBarHeight + 'px' }" v-if="isImmersive"></view>
-		<view class="tui-navigation_bar-title" :style="{ opacity: opacity, color: color, paddingTop: top - statusBarHeight + 'px' }" v-if="title && !isCustom">{{ title }}</view>
+		<view
+			class="tui-navigation_bar-title"
+			:style="{ opacity: transparent || opacity >= maxOpacity ? 1 : opacity, color: color, paddingTop: top - statusBarHeight + 'px' }"
+			v-if="title && !isCustom"
+		>
+			{{ title }}
+		</view>
 		<slot />
 	</view>
 </template>
@@ -24,7 +30,7 @@ export default {
 			type: String,
 			default: '#333'
 		},
-		//NavigationBar背景颜色
+		//NavigationBar背景颜色,不支持rgb
 		backgroundColor: {
 			type: String,
 			default: '#fff'
@@ -38,6 +44,16 @@ export default {
 		isOpacity: {
 			type: Boolean,
 			default: true
+		},
+		//不透明度最大值 0-1
+		maxOpacity: {
+			type: [Number, String],
+			default: 1
+		},
+		//背景透明 【设置该属性，则背景透明，只出现内容，isOpacity和maxOpacity失效】
+		transparent: {
+			type: Boolean,
+			default: false
 		},
 		//滚动条滚动距离
 		scrollTop: {
@@ -70,12 +86,27 @@ export default {
 		backdropFilter: {
 			type: Boolean,
 			default: false
+		},
+		//下拉隐藏NavigationBar，主要针对有回弹效果ios端
+		dropDownHide: {
+			type: Boolean,
+			default: false
+		},
+		//z-index设置
+		zIndex: {
+			type: [Number, String],
+			default: 9998
 		}
 	},
 	watch: {
 		scrollTop(newValue, oldValue) {
-			if (this.isOpacity) {
+			if (this.isOpacity && !this.transparent) {
 				this.opacityChange();
+			}
+		},
+		backgroundColor(val) {
+			if (val) {
+				this.background = this.hexToRgb(val);
 			}
 		}
 	},
@@ -87,11 +118,15 @@ export default {
 			top: 0,
 			scrollH: 1, //滚动总高度,计算opacity
 			opacity: 1, //0-1
-			statusBarHeight: 0 //状态栏高度
+			statusBarHeight: 0, //状态栏高度
+			background: '255,255,255', //header背景色
+			dropDownOpacity: 1
 		};
 	},
 	created() {
-		this.opacity = this.isOpacity ? 0 : 1;
+		this.dropDownOpacity = this.backdropFilter && 0;
+		this.opacity = this.isOpacity || this.transparent ? 0 : this.maxOpacity;
+		this.background = this.hexToRgb(this.backgroundColor);
 		let obj = {};
 		// #ifdef MP-WEIXIN
 		obj = wx.getMenuButtonBoundingClientRect();
@@ -115,22 +150,50 @@ export default {
 				this.$emit('init', {
 					width: this.width,
 					height: this.height,
-					left: obj.left,
+					left: this.left,
 					top: this.top,
 					statusBarHeight: this.statusBarHeight,
-					opacity: this.opacity
+					opacity: this.opacity,
+					windowHeight: res.windowHeight
 				});
 			}
 		});
 	},
 	methods: {
+		hexToRgb(hex) {
+			let rgb = '255,255,255';
+			if (hex && ~hex.indexOf('#')) {
+				if (hex.length === 4) {
+					let text = hex.substring(1, 4);
+					hex = '#' + text + text;
+				}
+				let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+				if (result) {
+					rgb = `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}`;
+				}
+			}
+			return rgb;
+		},
 		opacityChange() {
+			if (this.dropDownHide) {
+				if (this.scrollTop < 0) {
+					if (this.dropDownOpacity > 0) {
+						this.dropDownOpacity = 1 - Math.abs(this.scrollTop) / 30;
+					}
+				} else {
+					this.dropDownOpacity = 1;
+				}
+			}
+
 			let scroll = this.scrollTop <= 1 ? 0 : this.scrollTop;
 			let opacity = scroll / this.scrollH;
-			if ((this.opacity >= 1 && opacity >= 1) || (this.opacity == 0 && opacity == 0)) {
+			if ((this.opacity >= this.maxOpacity && opacity >= this.maxOpacity) || (this.opacity == 0 && opacity == 0)) {
 				return;
 			}
-			this.opacity = opacity;
+			this.opacity = opacity > this.maxOpacity ? this.maxOpacity : opacity;
+			if (this.backdropFilter) {
+				this.dropDownOpacity = this.opacity >= this.maxOpacity ? 1 : this.opacity;
+			}
 			this.$emit('change', {
 				opacity: this.opacity
 			});
@@ -142,6 +205,7 @@ export default {
 <style scoped>
 .tui-navigation-bar {
 	width: 100%;
+	transition: opacity 0.4s;
 }
 .tui-backdrop__filter {
 	/* Safari for macOS & iOS */
@@ -154,7 +218,6 @@ export default {
 	position: fixed;
 	left: 0;
 	top: 0;
-	z-index: 9998;
 }
 
 .tui-status-bar {
