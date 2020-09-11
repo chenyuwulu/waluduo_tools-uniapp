@@ -1,5 +1,13 @@
 <template>
 	<view class="page_box">
+		<u-gap height="20" />
+		<view class="user_box">
+			<!-- #ifdef MP-WEIXIN -->
+				<open-data type="userAvatarUrl"></open-data>
+				<open-data type="userNickName"></open-data>
+			<!-- #endif -->
+		</view>
+		<u-gap height="50" />
 		<u-button type="success" open-type="getUserInfo" @getuserinfo="get_userinfo_func">
 			获取用户基础信息
 		</u-button>
@@ -107,9 +115,19 @@
 	.page_box{
 		display: flex;
 		flex-direction: column;
-		padding-left: 36rpx;
-		padding-right: 36rpx;
-		padding-top: 20rpx;
+		.user_box{
+			display: flex;
+			flex-direction: column;
+			background-color: #66ccff;
+			color: #FFFFFF;
+			margin-left: 36rpx;
+			margin-right: 36rpx;
+			padding-left: 36rpx;
+			padding-right: 36rpx;
+			padding-top: 36rpx;
+			padding-bottom: 36rpx;
+			border-radius: 20rpx;
+		}
 	}
 	/* 提示窗口 */
 	.uni-tip {
