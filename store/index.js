@@ -8,6 +8,18 @@ const store = new Vuex.Store({
 		login:false,
 		token:'',
 		userinfo:{},
+		vuex_tabbar: [{
+				iconPath: "/static/tabbar/index.png",
+				selectedIconPath: "/static/tabbar/index_select.png",
+				text: '首页',
+				pagePath:'/pages/index/index'
+			},{
+				iconPath: "/static/tabbar/user.png",
+				selectedIconPath: "/static/tabbar/user_select.png",
+				text: '我的',
+				pagePath:'/pages/user/index',
+			}
+		],
 	},
 	mutations: {
 		login(state, provider){

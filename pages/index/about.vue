@@ -17,21 +17,21 @@
 					size="default"
 					:ripple="true"
 					type="primary"
-					@click="go_to_mp('wxc256e348c4032ebd')"
+					@click="go_to_mp(uview_appid)"
 					>uview</u-button>
 				<u-button
 					shape="square"
 					size="default"
 					:ripple="true"
 					type="primary"
-					@click="go_to_mp('wx999bf02c8e05dfc9')"
+					@click="go_to_mp(uniui_appid)"
 				>uni-ui</u-button>
 				<u-button
 					shape="square"
 					size="default"
 					:ripple="true"
 					type="primary"
-					@click="go_to_mp('wxb6a98ca343f57a38')"
+					@click="go_to_mp(thorui_appid)"
 				>thorui</u-button>
 			</view>
 		</view>
@@ -45,7 +45,17 @@
 		components:{},
 		data() {
 			return {
+				// #ifdef MP-WEIXIN
+				uview_appid:"wxc256e348c4032ebd",
+				uniui_appid:"wx999bf02c8e05dfc9",
+				thorui_appid:"wxb6a98ca343f57a38",
+				// #endif
 				
+				// #ifdef MP-QQ
+				uview_appid:"",
+				uniui_appid:"1109689877",
+				thorui_appid:"1109627073",
+				// #endif
 			}
 		},
 		//计算属性

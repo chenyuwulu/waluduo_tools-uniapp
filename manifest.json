@@ -71,7 +71,13 @@
             "scope.userLocation" : {
                 "desc" : "申请位置权限"
             }
-        }
+        },
+				"navigateToMiniProgramAppIdList": [
+					"wxc256e348c4032ebd",
+					"wx999bf02c8e05dfc9",
+					"wxb6a98ca343f57a38"
+				],
+				"resizable":true
     },
     "mp-alipay" : {
         "usingComponents" : true,
@@ -121,7 +127,11 @@
             "minified" : true,
             "es6" : true,
             "postcss" : true
-        }
+        },
+				"navigateToMiniProgramAppIdList": [
+					"1109689877",
+					"1109627073"
+				]
     },
     "quickapp-webview" : {
         "icon" : "static/logo.png",

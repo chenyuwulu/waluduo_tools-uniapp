@@ -5,7 +5,7 @@
 				"navigationBarTitleText": "首页"
 			}
 		},		
-		{	"path": "pages/user/user",//用户中心页面
+		{	"path": "pages/user/index",//用户中心页面
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
@@ -34,6 +34,7 @@
 			"style": {
 				"navigationBarTitleText": "关于本应用"
 			}
+			
 		}
 	],
 	"subPackages": [
@@ -121,25 +122,20 @@
 			"chenyu-(.*)": "@/components/chenyu/$1.vue",
 			"^u-(.*)": "@/components/uview-ui/components/u-$1/u-$1.vue"
 		}
+	},
+	"tabBar": {
+		"position":"bottom",
+		"color": "#7A7E83",
+		"selectedColor": "#0081ff",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},{
+				"pagePath": "pages/user/index",
+				"text": "我的"
+			}
+		]
 	}
-	// "tabBar": {
-	// 	"position":"bottom",
-	// 	"color": "#7A7E83",
-	// 	"selectedColor": "#0081ff",
-	// 	"borderStyle": "black",
-	// 	"backgroundColor": "#ffffff",
-	// 	"list": [{
-	// 			"pagePath": "pages/index/index",
-	// 			"iconPath": "/static/tabbar/home.png",
-	// 			"selectedIconPath": "/static/tabbar/home_select.png",
-	// 			"text": "首页"
-	// 		},
-	// 		{
-	// 			"pagePath": "pages/user/user",
-	// 			"iconPath": "/static/tabbar/user.png",
-	// 			"selectedIconPath": "/static/tabbar/user_select.png",
-	// 			"text": "用户中心"
-	// 		}
-	// 	]
-	// }
 }

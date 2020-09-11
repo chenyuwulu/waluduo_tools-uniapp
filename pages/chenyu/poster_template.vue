@@ -37,7 +37,15 @@
 						<view style="width: 50%;"><u-field :border-bottom="false" v-model="item.top" label="Y轴距离:" label-align="right" /></view>
 					</view>
 					<view style="width: 100%;display: flex;" v-if="item.type=='url' || item.type=='buffer'">
-						<view style="width: 50%;"><u-switch v-model="item.round"></u-switch></view>
+						<view style="width: 100%;">
+							<u-grid :col="2" hover-class="none" :border="false">
+								<u-grid-item>
+									<view style="font-weight: 500;">是否圆角</view>
+									<u-gap height="20"></u-gap>
+									<u-switch v-model="item.round"></u-switch>
+								</u-grid-item>
+							</u-grid>
+						</view>
 					</view>
 				</view>
 			</u-grid-item>
@@ -56,7 +64,7 @@
 								top:item.top+'rpx',
 								width:item.width+'rpx',
 								height:item.height+'rpx',
-								'border-radius': 50+'%'
+								'border-radius': (item.round?'50%':'0rpx')
 							}"
 							mode="scaleToFill" />
 						<image 
@@ -68,7 +76,7 @@
 								top:item.top+'rpx',
 								width:item.width+'rpx',
 								height:item.height+'rpx',
-								'border-radius': 50+'%'
+								'border-radius': (item.round?'50%':'0rpx')
 							}"
 							mode="scaleToFill" />
 						<view 

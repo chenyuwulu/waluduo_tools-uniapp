@@ -1,6 +1,9 @@
 <template>
-	<view class="flex flex-direction">
-		这是{{title}}默认flex排版容器
+	<view class="page_box">
+		<u-button type="success" open-type="getUserInfo" @getuserinfo="get_userinfo_func">
+			获取用户基础信息
+		</u-button>
+<!-- 		这是{{title}}默认flex排版容器
 		<tui-divider>快捷登录</tui-divider>
 		<uni-popup ref="is_login" type="center" :maskClick="false" :animation="true">
 			<view class="uni-tip">
@@ -11,7 +14,8 @@
 					<view class="uni-tip-button" @tap="navigateTo('login')">进行登录</view>
 				</view>
 			</view>
-		</uni-popup>
+		</uni-popup> -->
+		<u-tabbar :border-top="true" activeColor="#0071FE" :list="vuex_tabbar" />
 	</view>
 </template>
 
@@ -29,7 +33,11 @@
 			}
 		},
 		//计算属性
-		computed:{},
+		computed:{
+			vuex_tabbar(){
+				return this.$store.state.vuex_tabbar
+			}
+		},
 		//检测属性
 		watch:{},
 		onReady() {},
@@ -48,7 +56,7 @@
 			console.log(this.$store.state.login)
 			if(this.$store.state.login==false){
 				this.$nextTick(()=>{
-					this.$refs.is_login.open()
+					// this.$refs.is_login.open()
 				})
 			}
 			console.log(app)
@@ -87,12 +95,22 @@
 		methods:{
 			...mapMutations([
 				'login'
-			])
+			]),
+			get_userinfo_func(e){
+				console.log(e.detail)
+			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
+	.page_box{
+		display: flex;
+		flex-direction: column;
+		padding-left: 36rpx;
+		padding-right: 36rpx;
+		padding-top: 20rpx;
+	}
 	/* 提示窗口 */
 	.uni-tip {
 		padding-left: 30rpx;

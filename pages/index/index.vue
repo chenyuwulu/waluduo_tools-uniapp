@@ -10,6 +10,7 @@
 				<view class="grid-text">{{item.name}}</view>
 			</u-grid-item>
 		</u-grid>
+		<u-tabbar :border-top="true" activeColor="#0071FE" :list="vuex_tabbar" />
 	</view>
 </template>
 
@@ -50,6 +51,11 @@
 						url:"/pages/index/about"
 					},
 				]
+			}
+		},
+		computed:{
+			vuex_tabbar(){
+				return this.$store.state.vuex_tabbar
 			}
 		},
 		components:{
