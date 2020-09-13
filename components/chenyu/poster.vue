@@ -74,7 +74,7 @@
 					if(array_img[i].type=="text"){
 						ctx.setFillStyle(array_img[i].color)
 						ctx.setTextBaseline('top')
-						ctx.setTextAlign('center')
+						ctx.setTextAlign(array_img[i].center?'center':'left')
 						ctx.setFontSize(Number(array_img[i].size))
 						ctx.fillText(array_img[i].data, Number(array_img[i].left), Number(array_img[i].top))
 					}

@@ -47,6 +47,17 @@
 							</u-grid>
 						</view>
 					</view>
+					<view style="width: 100%;display: flex;" v-if="item.type=='text'">
+						<view style="width: 100%;">
+							<u-grid :col="2" hover-class="none" :border="false">
+								<u-grid-item>
+									<view style="font-weight: 500;">文字是否居中对齐</view>
+									<u-gap height="20"></u-gap>
+									<u-switch v-model="item.center"></u-switch>
+								</u-grid-item>
+							</u-grid>
+						</view>
+					</view>
 				</view>
 			</u-grid-item>
 		</u-grid>
@@ -88,7 +99,9 @@
 								size:item.size+'rpx',
 								color:item.color
 							}">
-							{{item.data}}
+							<view :style="{
+								'margin-left':item.center?'-50%':'0rpx'
+							}">{{item.data}}</view>
 						</view>
 					</block>
 					
@@ -155,6 +168,7 @@
 					type:"text",
 					size:40,
 					color:"#FFFFFF",
+					center:true,
 					data:e.detail.userInfo.nickName,
 					left:430,
 					top:900
