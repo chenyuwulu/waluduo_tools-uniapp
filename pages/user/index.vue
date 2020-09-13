@@ -3,14 +3,17 @@
 		<u-gap height="20" />
 		<view class="user_box">
 			<!-- #ifdef MP-WEIXIN -->
-				<open-data type="userAvatarUrl"></open-data>
+				<view style="width: 300rpx;height: 300rpx;border-radius: 50%;overflow: hidden;">
+					<open-data type="userAvatarUrl"></open-data>
+				</view>
+				<u-gap height="20"></u-gap>
 				<open-data type="userNickName"></open-data>
 			<!-- #endif -->
 		</view>
 		<u-gap height="50" />
-		<u-button type="success" open-type="getUserInfo" @getuserinfo="get_userinfo_func">
+<!-- 		<u-button type="success" open-type="getUserInfo" @getuserinfo="get_userinfo_func">
 			获取用户基础信息
-		</u-button>
+		</u-button> -->
 <!-- 		这是{{title}}默认flex排版容器
 		<tui-divider>快捷登录</tui-divider>
 		<uni-popup ref="is_login" type="center" :maskClick="false" :animation="true">
@@ -118,8 +121,10 @@
 		.user_box{
 			display: flex;
 			flex-direction: column;
-			background-color: #66ccff;
-			color: #FFFFFF;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0rpx 0rpx 5rpx 5rpx #EEEEEE;
+			color: #000000;
 			margin-left: 36rpx;
 			margin-right: 36rpx;
 			padding-left: 36rpx;

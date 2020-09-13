@@ -2,6 +2,9 @@
 	<view class="chenyu_page" style="padding-left: 40rpx;">
 		<u-time-line>
 			<u-time-line-item v-for="(item,index) in list" :key="index">
+				<template v-slot:node>
+					<u-icon name="bell-fill" :color="index==0?'#1AA034':'#969696'" :size="40"></u-icon>
+				</template>
 				<template v-slot:content>
 					<view class="chenyu_card">
 						<view class="u-order-title" :style="index==0?'color:#000000;font-size: 40rpx;':''">{{item.title}}</view>
@@ -33,6 +36,14 @@
 		data() {
 			return {
 				list:[
+					{
+						title:"v1.0.1",
+						content:[
+							"1.强化海报功能的定制性，加入文字对齐和图片是否圆角功能。",
+							"2.新增我的页面，后续将会明确首页和我的页面",
+						],
+						time:"2020年9月13日"
+					},
 					{
 						title:"v1.0.0",
 						content:[

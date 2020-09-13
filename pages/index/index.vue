@@ -31,7 +31,7 @@
 					// 	url:"/pages/chenyu/auto_view"
 					// },
 					{
-						name:"自定义导出图片",
+						name:"自定义海报",
 						icon:"order",
 						url:"/pages/chenyu/poster_template"
 					},
