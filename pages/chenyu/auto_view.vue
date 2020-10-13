@@ -7,11 +7,13 @@
 			<view style="height: 500rpx;background-color: #8F8F94;">text</view>
 		</scroll-view>
 		<swiper style="flex:70;">
-			<swiper-item style="background-color: #007AFF;">
-				111
+			<swiper-item style="background-color: #EEEEEE;">
+				<chenyu-audioplay
+					audio_src="https://weiqing.chenyuwulu.top/yi.mp3"
+					:is_volume="true"
+				/>
 			</swiper-item>
 			<swiper-item style="background-color: #4CD964;">
-				222
 			</swiper-item>
 		</swiper>
 	</view>

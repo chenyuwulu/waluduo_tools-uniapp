@@ -21,11 +21,11 @@
 			return {
 				title: '兴趣来自于缘分',
 				list:[
-					// {
-					// 	name:"vue模板页",
-					// 	icon:"",
-					// 	url:"/pages/chenyu/auto_view"
-					// },
+					{
+						name:"vue模板页",
+						icon:"order",
+						url:"/pages/chenyu/auto_view"
+					},
 					// {
 					// 	name:"css实现自动布局",
 					// 	url:"/pages/chenyu/auto_view"
