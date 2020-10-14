@@ -6,7 +6,7 @@
 		</view>
 		<u-grid :col="2">
 			<u-grid-item v-for="(item,index) in list" :key="index" @click="navigateTo(item.url)">
-				<u-icon :name="item.icon" :size="40"></u-icon>
+				<u-icon :name="item.icon" :size="45"></u-icon>
 				<view class="grid-text">{{item.name}}</view>
 			</u-grid-item>
 		</u-grid>
@@ -22,9 +22,9 @@
 				title: '兴趣来自于缘分',
 				list:[
 					{
-						name:"vue模板页",
-						icon:"order",
-						url:"/pages/chenyu/auto_view"
+						name:"音频播放器",
+						icon:"volume",
+						url:"/pages/chenyu/audioplay_template"
 					},
 					// {
 					// 	name:"css实现自动布局",
@@ -32,7 +32,7 @@
 					// },
 					{
 						name:"自定义海报",
-						icon:"order",
+						icon:"gift",
 						url:"/pages/chenyu/poster_template"
 					},
 					// {

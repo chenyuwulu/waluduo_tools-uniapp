@@ -66,7 +66,7 @@
 			margin-bottom: 20rpx;
 			padding: 20rpx 20rpx;
 			border-radius: 10rpx;
-			box-shadow:0rpx 0rpx 5rpx 0rpx #0081ff;
+			box-shadow:0rpx 0rpx 5rpx 0rpx $chenyu-color-main;
 		}
 	}
 </style>

@@ -56,6 +56,14 @@
 								
 							}
 						}
+					},
+					{	"path":"audioplay_template",
+						"style":{
+							"navigationBarTitleText": "音频播放器",
+							"usingComponents":{
+								
+							}
+						}
 					}
 				]
 			}

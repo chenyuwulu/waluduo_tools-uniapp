@@ -197,10 +197,10 @@
 </script>
 
 <style lang="scss">
-	page{
-		background-color: #F8F8F8;
-	}
 	.page_box{
+		background-color: #F8F8F8;
+		height: auto;
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
