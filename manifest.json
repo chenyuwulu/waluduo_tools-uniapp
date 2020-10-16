@@ -77,7 +77,7 @@
 					"wx999bf02c8e05dfc9",
 					"wxb6a98ca343f57a38"
 				],
-				"resizable":true
+				"resizable":false
     },
     "mp-alipay" : {
         "usingComponents" : true,

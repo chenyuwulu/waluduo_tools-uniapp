@@ -9,6 +9,17 @@
 				:is_volume="true"
 			/>
 		</view>
+		<u-gap height="40"></u-gap>
+		<view class="">
+			
+		</view>
+		<u-grid :col="1" hover-class="none">
+			<u-grid-item>
+				<view class="">
+					这是放
+				</view>
+			</u-grid-item>
+		</u-grid>
 		<u-gap height="200"></u-gap>
 	</view>
 </template>
@@ -24,10 +35,10 @@
 		},
 		onShow() {},
 		onLoad(options) {
-			// this.audioplay_src = "https://weiqing.chenyuwulu.top/yi.mp3"
+			this.audioplay_src = "https://weiqing.chenyuwulu.top/yi.mp3"
 			// this.audioplay_src = "https://weiqing.chenyuwulu.top/kong.mp3"
 			// this.audioplay_src = "https://weiqing.chenyuwulu.top/kong1mb.mp3"
-			this.audioplay_src = "https://weiqing.chenyuwulu.top/shuangxue.mp3"
+			// this.audioplay_src = "https://weiqing.chenyuwulu.top/shuangxue.mp3"
 			// this.audioplay_src = "https://weiqing.chenyuwulu.top/shuangxue1mb.mp3"
 		},
 		methods:{
