@@ -39,6 +39,7 @@
 			platform:platform,//平台名称
 			config_id:config_id,//对应配置表的id
 			system_info:uni.getSystemInfoSync(),//获取当前平台下的系统信息
+			yuanshen_relic:{},//原神圣遗物公共存储
 		},
 		//判断当前环境是不是微信环境
 		// #ifdef H5
