@@ -16,7 +16,7 @@ export const role = [
 				life:0,
 			},
 		]
-	}
+	},
 	//岩属性
 	{	type_name:"岩",
 		array:[
@@ -61,7 +61,7 @@ export const role = [
 				life:0,
 			},
 		]
-	}
+	},
 	//水属性
 	{	type_name:"水",
 		array:[
@@ -81,7 +81,7 @@ export const role = [
 				life:0,
 			},
 		]
-	}
+	},
 	//风属性
 	{	type_name:"风",
 		array:[
@@ -106,7 +106,7 @@ export const role = [
 				life:0,
 			},
 		]
-	}
+	},
 	//冰属性
 	{	type_name:"冰",
 		array:[
@@ -126,7 +126,7 @@ export const role = [
 				life:0,
 			},
 		]
-	}
+	},
 	//雷属性
 	{	type_name:"雷",
 		array:[
