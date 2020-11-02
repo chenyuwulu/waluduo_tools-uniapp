@@ -119,7 +119,7 @@
 			//原神
 			{	"root":"pages/we_service/yuanshen_relic",
 				"pages":[
-					{	"path":"role_setting",
+					{	"path":"role_setting",//角色配置页面
 						"style":{
 							"navigationBarTitleText":"角色配置",
 							"navigationBarBackgroundColor":"#0081ff"

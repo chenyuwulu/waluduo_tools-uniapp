@@ -26,10 +26,10 @@
 						icon:"volume",
 						url:"/pages/chenyu/audioplay_template"
 					},
-					// {
-					// 	name:"css实现自动布局",
-					// 	url:"/pages/chenyu/auto_view"
-					// },
+					{
+						name:"自定义配置",
+						url:"/pages/we_service/yuanshen_relic/role_setting"
+					},
 					{
 						name:"自定义海报",
 						icon:"gift",

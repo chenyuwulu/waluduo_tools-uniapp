@@ -1,18 +1,37 @@
 <template>
 	<view class="page_box">
-		<view class="">
-			<u-checkbox-group @change="checkboxGroupChange">
-				<u-checkbox 
-					@change="checkboxChange" 
-					v-model="item.checked" 
-					v-for="(item, index) in role" :key="index" 
-					:name="item.name"
-				>{{item.name}}
-				<image style="width: 100rpx;height: 100rpx;" :src="'/pages/we_service/yuanshen_relic/static/'+ item.icon +'.png'"></image>
-				</u-checkbox>
-			</u-checkbox-group>
-			<u-button @click="checkedAll">全选</u-button>
-		</view>
+		<block v-for="(item,index) in role" :key="index">
+			<u-gap height="48"></u-gap>
+				<view class="yuansu_box">
+					<view class="title" :style="{
+						'border-left':'6rpx solid '+item.color
+					}">
+						{{item.type_name}}
+					</view>
+					<view class="ren_box">
+						<view class="item" v-for="(x,y) in item.array" :key="y">
+							<chenyu-checkbox
+								@change="checkboxChange(index,y)"
+								:value="x.have"
+								:iconSize="14"
+								shape="fang"
+								primary-color="#18b566"/>
+							<view class="right">
+								<image @tap="checkboxChange(index,y)" style="width: 100rpx;height: 100rpx;" mode="widthFix" :src="'/pages/we_service/yuanshen_relic/static/'+x.icon+'.png'" />
+								<view class="text_name">
+									{{x.name}}
+								</view>
+								<u-rate v-if="x.have"
+									v-model="x.life"
+									active-color="#FA3534" 
+									inactive-color="#b2b2b2" 
+									:count="6"
+									gutter="0" />
+							</view>
+						</view>
+					</view>
+				</view>
+		</block>
 	</view>
 </template>
 
@@ -35,15 +54,56 @@
 			
 		},
 		methods:{
-			checkboxGroupChange(e){
-				console.log(e)
-			},
-			checkboxChange(e){
-				console.log(e)
+			checkboxChange(index1,index2){
+				console.log(index1,index2)
+				this.role[index1].array[index2].have = !this.role[index1].array[index2].have
 			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
+	.page_box{
+		width: 100%;
+		height: auto;
+		min-height: 100vh;
+		background-color: #f8f8f8;
+		.yuansu_box{
+			margin-left: 24rpx;
+			margin-right: 24rpx;
+			box-shadow:0rpx 0rpx 15rpx 2rpx #EFEFEF;
+			.title{
+				font-weight: 700;
+				font-size: 34rpx;
+				color: #000000;
+				border-top-left-radius: 5rpx;
+				border-bottom-right-radius: 5rpx;
+				padding-left: 20rpx;
+			}
+			.ren_box{
+				display: flex;
+				flex-wrap: wrap;
+				padding-top: 20rpx;
+				padding-bottom: 20rpx;
+				.item{
+					width: 33.3%;
+					margin-top: 20rpx;
+					padding-left: 20rpx;
+					display: flex;
+					align-items: center;
+					.right{
+						margin-left: 20rpx;
+						flex: 1;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						.text_name{
+							font-size: 28rpx;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
 </style>
