@@ -31,9 +31,7 @@
 </template>
 
 <script>
-	import request from "@/common/pocky-request/index"
 	import {mapState,mapMutations} from "vuex"
-	const instance = new request()
 	const app = getApp()
 	export default {
 		//声明引用组件
@@ -78,28 +76,6 @@
 			// 		name:'尘雨',
 			// 		age:24
 			// 	}
-			// })
-			// instance.request({
-			// 	url: "token",
-			// 	data: {
-			// 		page:1,
-			// 		rows:2,
-			// 		totalPage:3,
-			// 		totalSize:4,
-			// 		orderBy:"desc",
-			// 		Params:{
-			// 			a:1,
-			// 			b:2
-			// 		},
-			// 		object:{
-			// 			c:1,
-			// 			d:2,
-			// 			e:3,
-			// 			f:4
-			// 		}
-			// 	}
-			// }).then(res => {
-			// 	console.log(res)
 			// })
 		},
 		onHide() {},

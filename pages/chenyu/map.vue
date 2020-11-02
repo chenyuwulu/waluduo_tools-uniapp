@@ -5,8 +5,6 @@
 </template>
 
 <script>
-	import request from "@/common/pocky-request/index"
-	const instance = new request()
 	const app = getApp()
 	export default {
 		//声明引用组件
@@ -24,12 +22,6 @@
 		onShow() {},
 		onLoad(options) {
 			console.log(this)
-			instance.request({
-				url: "index",
-				data: {}
-			}).then(res => {
-				console.log(res)
-			})
 		},
 		onHide() {},
 		methods:{

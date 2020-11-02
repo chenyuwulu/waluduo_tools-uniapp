@@ -112,8 +112,6 @@
 </template>
 
 <script>
-	import request from "@/common/pocky-request/index"
-	const instance = new request()
 	const app = getApp()
 	export default {
 		//声明引用组件
@@ -137,9 +135,7 @@
 		computed: {},
 		//检测属性
 		watch: {},
-		mounted() {
-			
-		},
+		mounted() {},
 		onReady() {},
 		onShow() {},
 		onLoad(options) {
@@ -180,15 +176,10 @@
 						this.showtoast("密码不得为空")
 						return false
 					}
-					instance.request({
-						url: "login",
-						data: {
-							username: this.login_info.username,
-							password: this.login_info.password
-						},
-						methods: "POST",
-					}).then(res => {
-						console.log(res)
+					this.$u.post('login',{
+						username: this.login_info.username,
+						password: this.login_info.password
+					}).then(res=>{
 						this.$store.dispatch('login',res.data).then(z=>{
 							if(z==true){
 								this.switchTab('user')
@@ -209,20 +200,16 @@
 						uni.login({
 							success: (x) => {
 								console.log(x)
-								instance.request({
-									url: "uniapp/article/index",
-									data: {
-										code:x.code,
-										platform:app.$vm.$options.globalData.platform,
-										config_id:app.$vm.$options.globalData.config_id,
-										rawData:e.detail.rawData,
-										signature:e.detail.signature,
-										iv:e.detail.iv,
-										encryptedData:e.detail.encryptedData,
-										page:222,
-									},
-									methods: "POST",
-								}).then(res => {
+								this.$u.post('uniapp/article/index',{
+									code:x.code,
+									platform:app.$vm.$options.globalData.platform,
+									config_id:app.$vm.$options.globalData.config_id,
+									rawData:e.detail.rawData,
+									signature:e.detail.signature,
+									iv:e.detail.iv,
+									encryptedData:e.detail.encryptedData,
+									page:222,
+								}).then(res=>{
 									console.log(res)
 								})
 							}
@@ -237,19 +224,15 @@
 						uni.login({
 							success: (x) => {
 								console.log(x)
-								instance.request({
-									url: "uniapp/article/index",
-									data: {
-										code:x.code,
-										platform:app.$vm.$options.globalData.platform,
-										config_id:app.$vm.$options.globalData.config_id,
-										rawData:e.detail.rawData,
-										signature:e.detail.signature,
-										iv:e.detail.iv,
-										encryptedData:e.detail.encryptedData,
-									},
-									methods: "POST",
-								}).then(res => {
+								this.$u.post('uniapp/article/index',{
+									code:x.code,
+									platform:app.$vm.$options.globalData.platform,
+									config_id:app.$vm.$options.globalData.config_id,
+									rawData:e.detail.rawData,
+									signature:e.detail.signature,
+									iv:e.detail.iv,
+									encryptedData:e.detail.encryptedData,
+								}).then(res=>{
 									console.log(res)
 								})
 							}
@@ -264,19 +247,15 @@
 							uni.getUserInfo({
 								withCredentials:true,
 								success: (y) => {
-									instance.request({
-										url: "uniapp/article/index",
-										data: {
-											code:x.code,
-											platform:app.$vm.$options.globalData.platform,
-											config_id:app.$vm.$options.globalData.config_id,
-											rawData:y.rawData,
-											signature:y.signature,
-											iv:y.iv,
-											encryptedData:y.encryptedData,
-										},
-										methods: "POST",
-									}).then(res => {
+									this.$u.post('uniapp/article/index',{
+										code:x.code,
+										platform:app.$vm.$options.globalData.platform,
+										config_id:app.$vm.$options.globalData.config_id,
+										rawData:y.rawData,
+										signature:y.signature,
+										iv:y.iv,
+										encryptedData:y.encryptedData,
+									}).then(res=>{
 										console.log(res)
 									})
 								}

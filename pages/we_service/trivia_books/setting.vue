@@ -5,8 +5,6 @@
 </template>
 
 <script>
-	import request from "@/common/pocky-request/index"
-	const instance = new request()
 	const app = getApp()
 	export default {
 		//声明引用组件
