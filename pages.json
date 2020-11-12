@@ -1,5 +1,4 @@
-{
-	"pages": [
+{	"pages": [
 		{	"path": "pages/index/index",//首页
 			"style": {
 				"navigationBarTitleText": "首页"
@@ -39,94 +38,94 @@
 	],
 	"subPackages": [
 		//个人测试分包
-			{	"root": "pages/chenyu",
-				"pages": [
-					{	"path":"auto_view",
-						"style":{
-							"navigationBarTitleText": "auto_view",
-							"usingComponents":{
-								
-							}
-						}
-					},
-					{	"path":"poster_template",
-						"style":{
-							"navigationBarTitleText": "海报模板",
-							"usingComponents":{
-								
-							}
-						}
-					},
-					{	"path":"audioplay_template",
-						"style":{
-							"navigationBarTitleText": "音频播放器",
-							"usingComponents":{
-								
-							}
+		{	"root": "pages/chenyu",
+			"pages": [
+				{	"path":"auto_view",
+					"style":{
+						"navigationBarTitleText": "auto_view",
+						"usingComponents":{
+							
 						}
 					}
-				]
-			},
+				},
+				{	"path":"poster_template",
+					"style":{
+						"navigationBarTitleText": "海报模板",
+						"usingComponents":{
+							
+						}
+					}
+				},
+				{	"path":"audioplay_template",
+					"style":{
+						"navigationBarTitleText": "音频播放器",
+						"usingComponents":{
+							
+						}
+					}
+				}
+			]
+		},
 		//文章分包
-			{	"root": "pages/we_service/article",
-				"pages": [
-					{	"path": "list",
-						"style": {
-							"navigationBarTitleText": "文章列表",
-							"h5":{
-								"titleNView":{
-									"type":"default"
-								}
-							},
-							"app-plus":{
-								"titleNView":{
-									"type":"transparent"
-								}
+		{	"root": "pages/we_service/article",
+			"pages": [
+				{	"path": "list",
+					"style": {
+						"navigationBarTitleText": "文章列表",
+						"h5":{
+							"titleNView":{
+								"type":"default"
+							}
+						},
+						"app-plus":{
+							"titleNView":{
+								"type":"transparent"
 							}
 						}
 					}
-				]
-			},
-			//琐事便签分包
-			{	"root":"pages/we_service/trivia_books",
-				"pages":[
-					{	"path":"index",//琐事便签
-						"style":{
-							"navigationBarTitleText":"琐事便签",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"add",//新建便签
-						"style":{
-							"navigationBarTitleText":"新建便签",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"history",//历史记录
-						"style":{
-							"navigationBarTitleText":"历史记录",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
-					},
-					{	"path":"setting",//设置
-						"style":{
-							"navigationBarTitleText":"设置",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
+				}
+			]
+		},
+		//琐事便签分包
+		{	"root":"pages/we_service/trivia_books",
+			"pages":[
+				{	"path":"index",//琐事便签
+					"style":{
+						"navigationBarTitleText":"琐事便签",
+						"navigationBarBackgroundColor":"#0081ff"
 					}
-				]
-			},
-			//原神
-			{	"root":"pages/we_service/yuanshen_relic",
-				"pages":[
-					{	"path":"role_setting",//角色配置页面
-						"style":{
-							"navigationBarTitleText":"角色配置",
-							"navigationBarBackgroundColor":"#0081ff"
-						}
+				},
+				{	"path":"add",//新建便签
+					"style":{
+						"navigationBarTitleText":"新建便签",
+						"navigationBarBackgroundColor":"#0081ff"
 					}
-				]
-			}
+				},
+				{	"path":"history",//历史记录
+					"style":{
+						"navigationBarTitleText":"历史记录",
+						"navigationBarBackgroundColor":"#0081ff"
+					}
+				},
+				{	"path":"setting",//设置
+					"style":{
+						"navigationBarTitleText":"设置",
+						"navigationBarBackgroundColor":"#0081ff"
+					}
+				}
+			]
+		},
+		//原神
+		{	"root":"pages/we_service/yuanshen_relic",
+			"pages":[
+				{	"path":"role_setting",//角色配置页面
+					"style":{
+						"navigationBarTitleText":"角色配置",
+						"navigationBarBackgroundColor":"#0081ff"
+					}
+				}
+			]
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
